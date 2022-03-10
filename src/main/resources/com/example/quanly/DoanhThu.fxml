@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="561.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.MainController">
+   <children>
+      <Pane prefHeight="642.0" prefWidth="175.0" style="-fx-background-color: B5EAEA;">
+         <children>
+            <JFXButton layoutX="37.0" layoutY="228.0" prefHeight="50.0" prefWidth="89.0" text="Doanh thu" />
+            <JFXButton layoutX="37.0" layoutY="310.0" prefHeight="50.0" prefWidth="89.0" text="Khách hàng" />
+            <JFXButton layoutX="37.0" layoutY="145.0" prefHeight="50.0" prefWidth="89.0" text="Trang chủ" />
+            <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="53.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/save-water.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="162.0" prefHeight="642.0" prefWidth="694.0" style="-fx-background-color: #F7F7F7;">
+         <children>
+            <TextField layoutX="535.0" layoutY="120.0">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </TextField>
+            <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="633.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/147144.png" />
+               </image>
+            </ImageView>
+            <TableView layoutX="14.0" layoutY="190.0" prefHeight="406.0" prefWidth="656.0">
+               <columns>
+                  <TableColumn prefWidth="87.199951171875" text="Ngày" />
+                  <TableColumn prefWidth="160.800048828125" text="Số lượng thùng bán ra" />
+                  <TableColumn prefWidth="174.4000244140625" text="Số lượng thùng thu vào" />
+                  <TableColumn prefWidth="116.0" text="Doanh thu" />
+                  <TableColumn prefWidth="115.199951171875" />
+               </columns>
+            </TableView>
+            <Button layoutX="14.0" layoutY="117.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="89.0" text="Thêm" />
+            <Label layoutX="224.0" layoutY="115.0" prefHeight="40.0" prefWidth="237.0" text="Danh sách doanh thu">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Button layoutX="243.0" layoutY="155.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="66.0" style="-fx-background-radius: 0;" text="Ngày" />
+            <Button layoutX="304.0" layoutY="155.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="66.0" style="-fx-background-radius: 0;" text="Tháng" />
+            <Button layoutX="370.0" layoutY="155.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="66.0" style="-fx-background-radius: 0;" text="Năm" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
