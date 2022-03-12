@@ -1,32 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="561.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.MainController">
+<AnchorPane prefHeight="655.0" prefWidth="966.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.MainController">
    <children>
-      <Pane layoutY="83.0" prefHeight="562.0" prefWidth="163.0" style="-fx-background-color: #5FB0B7;" />
-      <Pane layoutY="-1.0" prefHeight="84.0" prefWidth="778.0" style="-fx-background-color: #6C91BF;">
+      <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
          <children>
-            <TextField layoutX="174.0" layoutY="28.0" style="-fx-background-color: White;" />
-            <Circle fill="DODGERBLUE" layoutX="736.0" layoutY="42.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="46.0" layoutY="14.0" prefHeight="40.0" prefWidth="89.0" text="Logo" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="35.0" />
+               </font>
+            </Label>
+            <Button layoutX="10.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font></Button>
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/home.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="10.0" layoutY="191.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="10.0" layoutY="245.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font></Button>
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/user.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/van-black-side-view.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane layoutX="192.0" layoutY="57.0" prefHeight="597.0" prefWidth="774.0" style="-fx-background-color: E6E6E6;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="459.0" text="Welcome to the Nhu Y store !" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="26.0" />
+               </font>
+            </Label>
+            <Pane layoutX="16.0" layoutY="315.0" prefHeight="241.0" prefWidth="740.0" styleClass="Rank" stylesheets="@../../../MainCSS.css">
+               <children>
+                  <JFXButton layoutX="14.0" layoutY="64.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn A">
+                     <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                     </font></JFXButton>
+                  <Label layoutX="18.0" layoutY="6.0" prefHeight="50.0" prefWidth="184.0" text="Top khách hàng" textAlignment="CENTER">
+                     <font>
+                        <Font name="Century Gothic Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutX="14.0" layoutY="120.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn B">
+                     <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="14.0" layoutY="177.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn C">
+                     <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/number-one.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/number-2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/number-3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu" stylesheets="@../../../MainCSS.css">
+               <children>
+                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="95.0" layoutY="126.0" prefHeight="32.0" prefWidth="89.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow (1).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="8.0" prefHeight="25.0" prefWidth="63.0" text="Day" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/dollar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="261.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu1" stylesheets="@../../../MainCSS.css">
+               <children>
+                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="95.0" layoutY="126.0" prefHeight="32.0" prefWidth="89.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow (1).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="8.0" prefHeight="38.0" prefWidth="99.0" text="Month" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/dollar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="511.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu2" stylesheets="@../../../MainCSS.css">
+               <children>
+                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="90.0" layoutY="126.0" prefHeight="32.0" prefWidth="99.0" text="   28 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow (1).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/right-arrow.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="8.0" prefHeight="38.0" prefWidth="89.0" text="Year" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/dollar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="98.0" layoutY="49.0" prefHeight="31.0" prefWidth="192.0" text="Người bạn uy tín của mọi nhà">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane layoutX="163.0" layoutY="83.0" prefHeight="562.0" prefWidth="615.0" style="-fx-background-color: #4D7C91;">
-         <children>
-            <Pane layoutX="30.0" layoutY="42.0" prefHeight="150.0" prefWidth="154.0" style="-fx-background-color: White;" />
-            <Pane layoutX="218.0" layoutY="42.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-            <Pane layoutX="411.0" layoutY="42.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-            <Pane layoutX="30.0" layoutY="213.0" prefHeight="150.0" prefWidth="154.0" style="-fx-background-color: White;" />
-            <Pane layoutX="218.0" layoutY="213.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-            <Pane layoutX="411.0" layoutY="213.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-            <Pane layoutX="30.0" layoutY="391.0" prefHeight="150.0" prefWidth="154.0" style="-fx-background-color: White;" />
-            <Pane layoutX="218.0" layoutY="391.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-            <Pane layoutX="411.0" layoutY="391.0" prefHeight="150.0" prefWidth="163.0" style="-fx-background-color: White;" />
-         </children>
-      </Pane>
+      <TextField layoutX="206.0" layoutY="8.0" prefHeight="38.0" prefWidth="235.0" promptText="    Tìm kiếm" styleClass="BgSearch" stylesheets="@../../../MainCSS.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="899.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/147144.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

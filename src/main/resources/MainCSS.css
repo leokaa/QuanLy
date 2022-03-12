@@ -1,0 +1,102 @@
+
+.BgLeft{
+    -fx-background-color: linear-gradient(to bottom,#2980b9,#2c3e50);
+}
+
+.BgLich{
+    -fx-border-color: #6F6F6F;
+}
+
+.BgSearch{
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+}
+
+.Rank{
+
+    -fx-background-color: #D3DEDC;
+    -fx-background-radius: 20px;
+}
+
+.RankSum{
+    -fx-background-color: #FAF1E6;
+}
+
+.BgDoanhThu{
+    -fx-background-color:  linear-gradient(to left,#eacda3,#d6ae7b);
+    -fx-background-radius: 10px;
+    -fx-opacity: 0.9;
+}
+.BgDoanhThu1{
+    -fx-background-color:  linear-gradient(to left,#DE6262,#FFB88C);
+    -fx-background-radius: 10px;
+    -fx-opacity: 0.9;
+}
+.BgDoanhThu2{
+    -fx-background-color:  linear-gradient(to left,#06beb6,#48b1bf);
+    -fx-background-radius: 10px;
+    -fx-opacity: 0.9;
+}
+
+.DetialRank{
+    -fx-background-color: #9ADCFF;
+    -fx-background-radius: 20px;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.5), 0, 0, 0, 5);
+
+}
+
+.BtnMenu{
+    -fx-background-color: #F9F9F9;
+    -fx-background-radius: 15px;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.BtnMenu:hover{
+    -fx-background-color: #DDDDDD;
+}
+
+.BtnMenu:pressed{
+    -fx-background-color: #F9F9F9;
+    -fx-background-radius: 15px;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+
+/*----------------------- Danh sach khach hang -----------------------*/
+.table-view {
+    -fx-background-color: #488FB1;
+    -fx-padding: 0 0 0 0;
+    -fx-background-radius: 0 0 7 7;
+}
+
+.table-view .column-header-background{
+    -fx-min-height: 50px;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14px;
+    -fx-border-width: 10px;
+    -fx-background-color: #CDB699;
+}
+
+.table-view .column-header {
+    -fx-background-color: #F7F7F7;
+    -fx-border-width: 0.5px;
+    -fx-border-color: #2d2c2c;
+    -fx-background-color: #C3DBD9;
+
+}
+
+.BtnThem{
+    -fx-background-color: #3fbefc;
+}
+
+.BtnThem :hover{
+    -fx-background-color: #60a0c4
+}
+
+/*----------------------- Danh sach khach hang -----------------------*/
+.BtnSelect{
+    -fx-background-radius: 0;
+}
+
+

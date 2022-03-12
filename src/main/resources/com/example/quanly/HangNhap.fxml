@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="646.0" prefWidth="986.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.DoanhThuController">
+<AnchorPane prefHeight="646.0" prefWidth="986.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.HangNhapController">
     <children>
         <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
@@ -47,26 +47,26 @@
                         <Image url="@image/user.png" />
                     </image>
                 </ImageView>
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
-               <font>
-                  <Font name="Century Gothic Bold" size="15.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/van-black-side-view.png" />
-               </image>
-            </ImageView>
+                <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+                    <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/van-black-side-view.png" />
+                    </image>
+                </ImageView>
             </children></Pane>
         <Pane layoutX="192.0" layoutY="57.0" prefHeight="598.0" prefWidth="794.0" style="-fx-background-color: E6E6E6;">
             <children>
                 <TableView layoutX="35.0" layoutY="118.0" prefHeight="466.0" prefWidth="725.0" stylesheets="@../../../MainCSS.css">
                     <columns>
-                        <TableColumn prefWidth="137.6000518798828" text="Ngày" />
-                        <TableColumn prefWidth="140.79998779296875" text="Loại hàng" />
-                        <TableColumn prefWidth="135.20001220703125" text="Số lượng bán ra" />
-                        <TableColumn prefWidth="144.0" text="Số lượng thu vào" />
-                  <TableColumn prefWidth="165.5999755859375" text="Tổng doanh thu" />
+                        <TableColumn prefWidth="137.6000518798828" text="Loại hàng" />
+                        <TableColumn prefWidth="140.79998779296875" text="Ngày nhập" />
+                        <TableColumn prefWidth="135.20001220703125" text="Số lượng " />
+                        <TableColumn prefWidth="144.0" text="Thành tiền" />
+                        <TableColumn prefWidth="165.5999755859375" text="Ghi chú" />
                     </columns>
                 </TableView>
                 <Button layoutX="35.0" layoutY="61.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" styleClass="BtnThem" stylesheets="@../../../MainCSS.css" text="Thêm">
@@ -78,21 +78,6 @@
                         <Font name="Century Gothic Bold" size="21.0" />
                     </font>
                 </Label>
-            <Button layoutX="281.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: CDB699;" styleClass="BtnSelect" stylesheets="@../../../MainCSS.css" text="Ngày">
-               <font>
-                  <Font name="Century Gothic Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="359.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: C3DBD9;" styleClass="BtnSelect" stylesheets="@../../../MainCSS.css" text="Tháng">
-               <font>
-                  <Font name="Century Gothic Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="437.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: E9DAC1;" styleClass="BtnSelect" stylesheets="@../../../MainCSS.css" text="Năm">
-               <font>
-                  <Font name="Century Gothic Bold" size="14.0" />
-               </font>
-            </Button>
             </children>
         </Pane>
         <TextField layoutX="206.0" layoutY="8.0" prefHeight="38.0" prefWidth="235.0" promptText="    Tìm kiếm" styleClass="BgSearch" stylesheets="@../../../MainCSS.css">

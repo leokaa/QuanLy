@@ -43,7 +43,7 @@
                   <Insets top="20.0" />
                </padding>
             </JFXTextArea>
-            <JFXButton layoutX="106.0" layoutY="336.0" prefHeight="51.0" prefWidth="125.0" style="-fx-background-color: #001F26;" styleClass="btnDN" stylesheets="@../../../../java/LoginCSS.css" text="Đăng nhập" textFill="#fff9f9">
+            <JFXButton layoutX="106.0" layoutY="336.0" prefHeight="51.0" prefWidth="125.0" style="-fx-background-color: #001F26;" styleClass="btnDN" stylesheets="@../../../LoginCSS.css" text="Đăng nhập" textFill="#fff9f9">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

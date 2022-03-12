@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,44 +9,88 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="561.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.MainController">
-   <children>
-      <Pane prefHeight="642.0" prefWidth="175.0" style="-fx-background-color: B5EAEA;">
-         <children>
-            <JFXButton layoutX="37.0" layoutY="228.0" prefHeight="50.0" prefWidth="89.0" text="Doanh thu" />
-            <JFXButton layoutX="37.0" layoutY="310.0" prefHeight="50.0" prefWidth="89.0" text="Khách hàng" />
-            <JFXButton layoutX="37.0" layoutY="145.0" prefHeight="50.0" prefWidth="89.0" text="Trang chủ" />
-            <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="53.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane prefHeight="646.0" prefWidth="986.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
+    <children>
+        <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
+            <children>
+                <Label layoutX="46.0" layoutY="14.0" prefHeight="40.0" prefWidth="89.0" text="Logo" textFill="WHITE">
+                    <font>
+                        <Font name="Century Gothic Bold" size="35.0" />
+                    </font>
+                </Label>
+                <Button layoutX="10.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
+                    <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                    </font></Button>
+                <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/home.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="10.0" layoutY="191.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
+                    <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                    </font></Button>
+                <Button layoutX="10.0" layoutY="245.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
+                    <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                    </font></Button>
+                <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/coin.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/user.png" />
+                    </image>
+                </ImageView>
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image/save-water.png" />
+                  <Image url="@image/van-black-side-view.png" />
                </image>
             </ImageView>
-         </children></Pane>
-      <Pane layoutX="162.0" prefHeight="642.0" prefWidth="690.0" style="-fx-background-color: #F7F7F7;">
+            </children></Pane>
+        <Pane layoutX="192.0" layoutY="57.0" prefHeight="598.0" prefWidth="909.0" style="-fx-background-color: E6E6E6;">
          <children>
-            <TextField layoutX="538.0" layoutY="130.0">
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-            </TextField>
-            <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="633.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/147144.png" />
-               </image>
-            </ImageView>
-            <TableView layoutX="14.0" layoutY="190.0" prefHeight="406.0" prefWidth="659.0">
+            <TableView layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="888.0" stylesheets="@../../../MainCSS.css">
               <columns>
-                <TableColumn prefWidth="87.199951171875" text="Tên khách" />
-                <TableColumn prefWidth="97.60003662109375" text="Số điện thoại" />
-                  <TableColumn prefWidth="104.0" text="Địa chỉ" />
-                  <TableColumn prefWidth="111.20010375976562" text="Số thùng đã mua" />
-                  <TableColumn prefWidth="132.7999267578125" text="Số thùng đã trả" />
-                  <TableColumn prefWidth="132.7999267578125" text="Thực thi" />
+                <TableColumn prefWidth="125.5999755859375" text="Tên Khách hàng" />
+                  <TableColumn prefWidth="140.0" text="Số điện thoại" />
+                  <TableColumn prefWidth="136.0" text="Địa chỉ" />
+                  <TableColumn prefWidth="133.60003662109375" text="Nợ thùng" />
+                  <TableColumn prefWidth="136.800048828125" text="Nợ tiền" />
+                <TableColumn minWidth="30.0" prefWidth="102.4000244140625" text="Ghi chú" />
+                  <TableColumn minWidth="30.0" prefWidth="110.39990234375" text="Thực thi" />
               </columns>
             </TableView>
-            <Button layoutX="14.0" layoutY="124.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="89.0" text="Thêm" />
+            <Button layoutX="14.0" layoutY="57.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" styleClass="BtnThem" stylesheets="@../../../MainCSS.css" text="Thêm">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font></Button>
+            <Label layoutX="331.0" layoutY="18.0" prefHeight="57.0" prefWidth="245.0" text="Danh sách khách hàng">
+               <font>
+                  <Font name="Century Gothic Bold" size="21.0" />
+               </font>
+            </Label>
          </children>
-      </Pane>
-   </children>
+        </Pane>
+        <TextField layoutX="206.0" layoutY="8.0" prefHeight="38.0" prefWidth="235.0" promptText="    Tìm kiếm" styleClass="BgSearch" stylesheets="@../../../MainCSS.css">
+            <font>
+                <Font name="Century Gothic" size="16.0" />
+            </font>
+        </TextField>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1048.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/147144.png" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>
