@@ -1,0 +1,16 @@
+
+.textF_Name{
+    -fx-background-radius: 0px;
+    -fx-border-width: 20 0 0 0;
+}
+
+.btnDN{
+    -fx-background-color:  #001F26;
+    -fx-background-radius: 30px;
+}
+
+.btnDN:hover {
+    -fx-background-color: #15c3ec;
+
+}
+
