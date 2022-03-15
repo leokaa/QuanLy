@@ -9,7 +9,7 @@ public class DatabaseConnection {
 
         String databaseUser = "root";
         String databasePassword = "";
-        String url = "jdbc:mysql://localhost:3306/user";
+        String url = "jdbc:mysql://localhost:3306/quanly";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
