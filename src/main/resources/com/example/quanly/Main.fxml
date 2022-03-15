@@ -19,7 +19,7 @@
                   <Font name="Century Gothic Bold" size="35.0" />
                </font>
             </Label>
-            <Button layoutX="10.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
+            <Button fx:id="Btn_trangchu" layoutX="10.0" layoutY="137.0" mnemonicParsing="false" onAction="#sceneTrangChu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
@@ -28,11 +28,11 @@
                   <Image url="@image/home.png" />
                </image>
             </ImageView>
-            <Button layoutX="10.0" layoutY="191.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
+            <Button fx:id="Btn_doanhthu" layoutX="10.0" layoutY="191.0" mnemonicParsing="false" onAction="#sceneDoanhThu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
-            <Button layoutX="10.0" layoutY="245.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
+            <Button fx:id="Btn_khachhang" layoutX="10.0" layoutY="245.0" mnemonicParsing="false" onAction="#sceneKhachHang" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
@@ -46,12 +46,12 @@
                   <Image url="@image/user.png" />
                </image>
             </ImageView>
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+            <Button fx:id="Btn_hangnhap" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#sceneHangNhap" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
             </Button>
-            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/van-black-side-view.png" />
                </image>
@@ -231,7 +231,7 @@
             <Font name="Century Gothic" size="16.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="899.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="920.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/147144.png" />
          </image>

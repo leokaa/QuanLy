@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="646.0" prefWidth="986.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
+<AnchorPane prefHeight="635.0" prefWidth="1102.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
     <children>
         <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
@@ -20,7 +20,7 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
-                <Button layoutX="10.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
+                <Button fx:id="Btn_trangchu" layoutX="10.0" layoutY="137.0" mnemonicParsing="false" onAction="#sceneTrangChu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                     </font></Button>
@@ -29,11 +29,11 @@
                         <Image url="@image/home.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="10.0" layoutY="191.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
+                <Button fx:id="Btn_Doanhthu" layoutX="10.0" layoutY="191.0" mnemonicParsing="false" onAction="#sceneDoanhThu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="245.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
+                <Button fx:id="Btn_Khachhang" layoutX="10.0" layoutY="245.0" mnemonicParsing="false" onAction="#sceneKhachHang" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                     </font></Button>
@@ -47,18 +47,18 @@
                         <Image url="@image/user.png" />
                     </image>
                 </ImageView>
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+            <Button fx:id="Btn_Hangnhap" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#sceneHangNhap" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
             </Button>
-            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/van-black-side-view.png" />
                </image>
             </ImageView>
             </children></Pane>
-        <Pane layoutX="192.0" layoutY="57.0" prefHeight="598.0" prefWidth="909.0" style="-fx-background-color: E6E6E6;">
+        <Pane layoutX="192.0" layoutY="57.0" prefHeight="594.0" prefWidth="910.0" style="-fx-background-color: E6E6E6;">
          <children>
             <TableView layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="888.0" stylesheets="@../../../MainCSS.css">
               <columns>
