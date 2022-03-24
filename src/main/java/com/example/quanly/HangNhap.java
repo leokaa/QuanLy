@@ -1,17 +1,17 @@
-package com.example.quanly.HangNhap;
+package com.example.quanly;
 
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 
 public class HangNhap {
-    private int mahn;
     private Date NgayNhap;
     private String Ten_LH;
     private int SoLuong;
     private int ThanhTien;
     private String GhiChu;
 
-    public HangNhap(int mahn, Date ngayNhap,String Ten_LH, int soLuong,int ThanhTien, String ghiChu) {
-        this.mahn = mahn;
+    public HangNhap(Date ngayNhap,String Ten_LH, int soLuong,int ThanhTien, String ghiChu) {
         this.NgayNhap = ngayNhap;
         this.Ten_LH = Ten_LH;
         this.SoLuong = soLuong;
@@ -19,14 +19,10 @@ public class HangNhap {
         this.GhiChu = ghiChu;
     }
 
+    public HangNhap() {
 
-    public int getMahn() {
-        return mahn;
     }
 
-    public void setMahn(int mahn) {
-        this.mahn = mahn;
-    }
 
     public String getTen_LH() {
         return Ten_LH;
@@ -71,7 +67,6 @@ public class HangNhap {
     @Override
     public String toString() {
         return "HangNhap{" +
-                "mahn=" + mahn +
                 ", Ten_LH=" + Ten_LH +
                 ", NgayNhap=" + NgayNhap +
                 ", SoLuong=" + SoLuong +

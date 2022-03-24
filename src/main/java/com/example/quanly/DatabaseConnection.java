@@ -9,7 +9,10 @@ public class DatabaseConnection {
 
         String databaseUser = "root";
         String databasePassword = "";
-        String url = "jdbc:mysql://localhost:3306/quanly";
+        String url = "jdbc:mysql://localhost:3306/quanly1?zeroDateTimeBehavior=convertToNull";
+
+
+
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

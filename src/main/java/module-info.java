@@ -6,6 +6,4 @@ module com.example.quanly {
 
     opens com.example.quanly to javafx.fxml;
     exports com.example.quanly;
-    exports com.example.quanly.HangNhap;
-    opens com.example.quanly.HangNhap to javafx.fxml;
 }

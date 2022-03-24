@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 14, 2022 lúc 04:14 PM
+-- Thời gian đã tạo: Th3 15, 2022 lúc 04:32 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanly`
+-- Cơ sở dữ liệu: `quanly1`
 --
-CREATE DATABASE IF NOT EXISTS `quanly` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `quanly`;
+CREATE DATABASE IF NOT EXISTS `quanly1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `quanly1`;
 
 -- --------------------------------------------------------
 
@@ -31,9 +31,9 @@ USE `quanly`;
 
 CREATE TABLE `quanly_doanhthu` (
   `DT_ngay` date NOT NULL,
-  `DT_soluongthungban` int(11) NOT NULL,
-  `DT_soluongchaiban` int(11) NOT NULL,
-  `DT_soluongthungtra` int(11) NOT NULL
+  `DT_soluongban` int(11) NOT NULL,
+  `DT_soluongtra` int(11) NOT NULL,
+  `LH_malh` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE `quanly_doanhthu` (
 
 CREATE TABLE `quanly_hangnhap` (
   `HN_ngay` date NOT NULL,
-  `HN_malh` varchar(10) NOT NULL,
+  `LH_malh` varchar(10) NOT NULL,
   `HN_soluong` int(15) NOT NULL,
   `HN_ghichu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -84,7 +84,15 @@ CREATE TABLE `quanly_loaihang` (
 -- Chỉ mục cho bảng `quanly_doanhthu`
 --
 ALTER TABLE `quanly_doanhthu`
-  ADD PRIMARY KEY (`DT_ngay`);
+  ADD PRIMARY KEY (`DT_ngay`,`LH_malh`),
+  ADD KEY `fk_dt` (`LH_malh`);
+
+--
+-- Chỉ mục cho bảng `quanly_hangnhap`
+--
+ALTER TABLE `quanly_hangnhap`
+  ADD PRIMARY KEY (`HN_ngay`,`LH_malh`),
+  ADD KEY `malh` (`LH_malh`);
 
 --
 -- Chỉ mục cho bảng `quanly_khanhhang`
@@ -97,6 +105,22 @@ ALTER TABLE `quanly_khanhhang`
 --
 ALTER TABLE `quanly_loaihang`
   ADD PRIMARY KEY (`LH_malh`);
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `quanly_doanhthu`
+--
+ALTER TABLE `quanly_doanhthu`
+  ADD CONSTRAINT `fk_dt` FOREIGN KEY (`LH_malh`) REFERENCES `quanly_loaihang` (`LH_malh`);
+
+--
+-- Các ràng buộc cho bảng `quanly_hangnhap`
+--
+ALTER TABLE `quanly_hangnhap`
+  ADD CONSTRAINT `malh` FOREIGN KEY (`LH_malh`) REFERENCES `quanly_loaihang` (`LH_malh`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
