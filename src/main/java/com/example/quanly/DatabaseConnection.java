@@ -2,26 +2,19 @@ package com.example.quanly;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.lang.String;
+import java.sql.SQLException;
+
 public class DatabaseConnection {
-    public Connection databaseLink;
+    private static String HOST = "localhost";
+    private static int POST = 3306;
+    private static String DB_name = "quanly1";
+    private static String User = "root";
+    private static String Pass = "";
 
-    public Connection getConnection(){
+    private static Connection connection;
 
-        String databaseUser = "root";
-        String databasePassword = "";
-        String url = "jdbc:mysql://localhost:3306/quanly1?zeroDateTimeBehavior=convertToNull";
-
-
-
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
-
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-        return databaseLink;
+    public static Connection getConnect() throws SQLException {
+        connection = DriverManager.getConnection(String.format("jdbc:mysql://%s/%s", HOST, DB_name), User, Pass);
+        return connection;
     }
 }

@@ -2,12 +2,16 @@ package com.example.quanly;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class KhachHangController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class KhachHangController  implements Initializable {
     //------------------------------------------Các nút menu------------------------------------------\\
     public void sceneTrangChu(ActionEvent event) throws Exception{
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -73,4 +77,10 @@ public class KhachHangController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
 }

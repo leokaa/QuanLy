@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -64,62 +67,75 @@
                   <Font name="Century Gothic Bold" size="26.0" />
                </font>
             </Label>
-            <Pane layoutX="16.0" layoutY="315.0" prefHeight="241.0" prefWidth="740.0" styleClass="Rank" stylesheets="@../../../MainCSS.css">
+            <Pane layoutX="16.0" layoutY="289.0" prefHeight="287.0" prefWidth="740.0" styleClass="Rank" stylesheets="@../../../MainCSS.css">
                <children>
-                  <JFXButton layoutX="14.0" layoutY="64.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn A">
+                  <JFXButton layoutX="14.0" layoutY="58.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn A">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font></JFXButton>
-                  <Label layoutX="18.0" layoutY="6.0" prefHeight="50.0" prefWidth="184.0" text="Top khách hàng" textAlignment="CENTER">
+                  <Label layoutX="18.0" prefHeight="50.0" prefWidth="184.0" text="Top khách hàng" textAlignment="CENTER">
                      <font>
                         <Font name="Century Gothic Bold" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="14.0" layoutY="120.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn B">
+                  <JFXButton layoutX="14.0" layoutY="116.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn B">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="14.0" layoutY="177.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn C">
+                  <JFXButton layoutX="14.0" layoutY="180.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn C">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/number-one.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/number-2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="43.0" layoutX="29.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/number-3.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="370.0" prefHeight="50.0" prefWidth="335.0" text="Biểu đồ doanh thu hàng tháng" textAlignment="CENTER">
+                     <font>
+                        <Font name="Century Gothic Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <LineChart fx:id="idLineChart" layoutX="316.0" layoutY="50.0" prefHeight="232.0" prefWidth="404.0" style="-fx-background-radius: 7px; -fx-background-color: white;">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children>
             </Pane>
-            <Pane layoutX="14.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu" stylesheets="@../../../MainCSS.css">
+            <Pane layoutX="14.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayRa" layoutX="86.0" layoutY="94.0" prefHeight="32.0" prefWidth="125.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="95.0" layoutY="126.0" prefHeight="32.0" prefWidth="89.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayVao" layoutX="86.0" layoutY="126.0" prefHeight="32.0" prefWidth="125.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow (1).png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow.png" />
                      </image>
@@ -129,36 +145,36 @@
                         <Font name="Century Gothic Bold" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="35.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayTong" layoutX="86.0" layoutY="62.0" prefHeight="32.0" prefWidth="125.0" text="  300.000" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="261.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu1" stylesheets="@../../../MainCSS.css">
+            <Pane layoutX="260.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu1" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthRa" layoutX="84.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="95.0" layoutY="126.0" prefHeight="32.0" prefWidth="89.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthVao" layoutX="84.0" layoutY="126.0" prefHeight="32.0" prefWidth="137.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow (1).png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow.png" />
                      </image>
@@ -168,36 +184,36 @@
                         <Font name="Century Gothic Bold" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="35.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthTong" layoutX="84.0" layoutY="62.0" prefHeight="32.0" prefWidth="137.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="511.0" layoutY="113.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu2" stylesheets="@../../../MainCSS.css">
+            <Pane layoutX="511.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu2" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label layoutX="95.0" layoutY="94.0" prefHeight="32.0" prefWidth="89.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="yearRa" layoutX="85.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="90.0" layoutY="126.0" prefHeight="32.0" prefWidth="99.0" text="   28 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="yearVao" layoutX="85.0" layoutY="126.0" prefHeight="32.0" prefWidth="156.0" text="   28 thùng" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow (1).png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="51.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="35.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/right-arrow.png" />
                      </image>
@@ -207,12 +223,12 @@
                         <Font name="Century Gothic Bold" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="50.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="35.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="94.0" layoutY="62.0" prefHeight="32.0" prefWidth="99.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="YearTong" layoutX="85.0" layoutY="62.0" prefHeight="32.0" prefWidth="150.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="20.0" />
                      </font>

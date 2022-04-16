@@ -1,28 +1,35 @@
 package com.example.quanly;
 
-import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 
 public class HangNhap {
     private Date NgayNhap;
     private String Ten_LH;
     private int SoLuong;
+    private int DonGia;
     private int ThanhTien;
     private String GhiChu;
 
-    public HangNhap(Date ngayNhap,String Ten_LH, int soLuong,int ThanhTien, String ghiChu) {
+    public HangNhap(Date ngayNhap,String Ten_LH, int soLuong,int DonGia,int ThanhTien, String ghiChu) {
         this.NgayNhap = ngayNhap;
         this.Ten_LH = Ten_LH;
         this.SoLuong = soLuong;
         this.ThanhTien = ThanhTien;
         this.GhiChu = ghiChu;
+        this.DonGia=DonGia;
     }
 
     public HangNhap() {
 
     }
 
+    public int getDonGia() {
+        return DonGia;
+    }
+
+    public void setDonGia(int donGia) {
+        DonGia = donGia;
+    }
 
     public String getTen_LH() {
         return Ten_LH;
