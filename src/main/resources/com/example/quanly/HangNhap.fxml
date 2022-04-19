@@ -163,21 +163,36 @@
                         <Font name="Century Gothic Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="edit_soluong" layoutX="208.0" layoutY="215.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
+                  <TextField fx:id="edit_soluong" layoutX="208.0" layoutY="215.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
                   <Label layoutX="32.0" layoutY="362.0" prefHeight="31.0" prefWidth="162.0" text="Ghi chú :">
                      <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="edit_ghichu" layoutX="208.0" layoutY="331.0" prefHeight="92.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                  <TextField fx:id="edit_loaihang" editable="false" layoutX="208.0" layoutY="156.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
+                  <TextArea fx:id="edit_ghichu" layoutX="208.0" layoutY="331.0" prefHeight="92.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextArea>
+                  <TextField fx:id="edit_loaihang" alignment="CENTER" editable="false" layoutX="208.0" layoutY="156.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
                   <Label layoutX="32.0" layoutY="276.0" prefHeight="31.0" prefWidth="162.0" text="Đơn giá: ">
                      <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="edit_dongia" layoutX="208.0" layoutY="271.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                  <TextField fx:id="edit_ngaynhap" editable="false" layoutX="208.0" layoutY="87.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
+                  <TextField fx:id="edit_dongia" layoutX="208.0" layoutY="271.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <TextField fx:id="edit_ngaynhap" alignment="CENTER" editable="false" layoutX="208.0" layoutY="87.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></TextField>
                </children>
             </Pane>
             </children>
@@ -187,7 +202,7 @@
                 <Font name="Century Gothic" size="16.0" />
             </font>
         </TextField>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="932.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1070.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@image/147144.png" />
             </image>

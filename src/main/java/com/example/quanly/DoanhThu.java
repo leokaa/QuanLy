@@ -1,11 +1,11 @@
 package com.example.quanly;
 
 public class DoanhThu {
-    private String ngay;
-    private int soluongban;
-    private int soluongtra;
-    private String maLH;
-    private  String tongdoanhthu;
+    private String ngay = null;
+    private int soluongban = 0;
+    private int soluongtra = 0;
+    private String maLH = null;
+    private  String tongdoanhthu = null;
 
     public DoanhThu(String ngay, int soluongban, int soluongtra, String maLH,String tongdoanhthu) {
         this.ngay = ngay;

@@ -120,12 +120,12 @@
             </Pane>
             <Pane layoutX="14.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label fx:id="dayRa" layoutX="86.0" layoutY="94.0" prefHeight="32.0" prefWidth="125.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayRa" layoutX="86.0" layoutY="94.0" prefHeight="32.0" prefWidth="125.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dayVao" layoutX="86.0" layoutY="126.0" prefHeight="32.0" prefWidth="125.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayVao" layoutX="86.0" layoutY="126.0" prefHeight="32.0" prefWidth="125.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
@@ -150,7 +150,7 @@
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dayTong" layoutX="86.0" layoutY="62.0" prefHeight="32.0" prefWidth="125.0" text="  300.000" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayTong" layoutX="86.0" layoutY="62.0" prefHeight="32.0" prefWidth="125.0" text=" 0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="20.0" />
                      </font>
