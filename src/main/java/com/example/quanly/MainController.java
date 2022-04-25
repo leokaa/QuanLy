@@ -116,12 +116,11 @@ public class MainController implements Initializable{
 
 
     public void showLienChart() throws SQLException {
-        //////////////////////////////////////////////////////////////////////////////
-        //defining the axes
+
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Number of Month");
-        //creating the chart
+
         final LineChart<Number,Number> lineChart =
                 new LineChart<Number,Number>(xAxis,yAxis);
 

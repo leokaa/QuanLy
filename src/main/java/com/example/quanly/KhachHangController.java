@@ -258,15 +258,16 @@ public class KhachHangController  implements Initializable {
                         //TableCell<SinhVien, String> cell = new TableCell<>();
 
                         Button editButton = new Button("Sửa");
-//                        Image image = new Image(getClass().getResourceAsStream("editing.png"));
                         editButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
                         Button deleteButton = new Button("Xóa");
-//                        Image image1 = new Image(getClass().getResourceAsStream("D:\\QuanLy\\src\\main\\resources\\com\\example\\quanly\\image\\editing.png"));
                         deleteButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
-//                        deleteButton.setGraphic(new ImageView(image1));
 
-                        HBox manageButton = new HBox( editButton, deleteButton);
+                        Button giaodichButton = new Button("Giao dịch");
+                        giaodichButton.setStyle("-fx-background-color: #6EBF8B; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+
+
+                        HBox manageButton = new HBox( editButton, deleteButton,giaodichButton);
                         manageButton.setStyle("-fx-alignment:center");
                         setGraphic(manageButton);
 
@@ -326,6 +327,7 @@ public class KhachHangController  implements Initializable {
 
 
                         });
+
 
 
                     }

@@ -62,6 +62,12 @@
     -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
+.BgGiaoDich{
+    -fx-shape: 'M 0 0 70 0 0 70 z';
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 0);
+    -fx-background-color: E4E9BE;
+}
+
 
 /*----------------------- Danh sach khach hang -----------------------*/
 /*.table-view {*/
@@ -203,8 +209,7 @@
     -fx-background-radius: 5px;
 }
 .txtF{
-    -fx-background-radius: 0px;
-
+    -fx-background-radius: 20px;
 }
 
 .lb{

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,7 +10,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="647.0" prefWidth="1222.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
@@ -71,25 +69,25 @@
                     </font>
                 </Button>
             </children></Pane>
-        <Pane layoutX="192.0" layoutY="57.0" prefHeight="594.0" prefWidth="1029.0" style="-fx-background-color: E6E6E6;">
+        <Pane layoutX="192.0" layoutY="57.0" prefHeight="594.0" prefWidth="1114.0" style="-fx-background-color: E6E6E6;">
             <children>
-                <TableView fx:id="tableView" layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="988.0" stylesheets="@../../../MainCSS.css">
+                <TableView fx:id="tableView" layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="1085.0" stylesheets="@../../../MainCSS.css">
                     <columns>
                         <TableColumn fx:id="sttcol" prefWidth="50.0" text="STT" />
-                        <TableColumn fx:id="tencol" prefWidth="186.0" text="Tên Khách hàng" />
-                        <TableColumn fx:id="sdtcol" prefWidth="156.0" text="Số điện thoại" />
-                        <TableColumn fx:id="diachicol" prefWidth="136.0" text="Địa chỉ" />
+                        <TableColumn fx:id="tencol" prefWidth="164.00001525878906" text="Tên Khách hàng" />
+                        <TableColumn fx:id="sdtcol" prefWidth="165.60003662109375" text="Số điện thoại" />
+                        <TableColumn fx:id="diachicol" prefWidth="148.79998779296875" text="Địa chỉ" />
                         <TableColumn fx:id="nothungcol" prefWidth="133.60003662109375" text="Nợ thùng" />
                         <TableColumn fx:id="notiencol" prefWidth="136.800048828125" text="Nợ tiền" />
                         <TableColumn fx:id="ghichucol" minWidth="30.0" prefWidth="102.4000244140625" text="Ghi chú" />
-                        <TableColumn fx:id="thucthicol" minWidth="30.0" prefWidth="83.0" text="Thực thi" />
+                        <TableColumn fx:id="thucthicol" minWidth="30.0" prefWidth="188.8001708984375" text="Thực thi" />
                     </columns>
                 </TableView>
                 <Button layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onAction="#create" prefHeight="33.0" prefWidth="100.0" styleClass="BtnThem" stylesheets="@../../../MainCSS.css" text="Thêm">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font></Button>
-                <Label layoutX="381.0" layoutY="14.0" prefHeight="57.0" prefWidth="245.0" text="Danh sách khách hàng">
+                <Label layoutX="435.0" layoutY="14.0" prefHeight="57.0" prefWidth="245.0" text="Danh sách khách hàng">
                     <font>
                         <Font name="Century Gothic Bold" size="21.0" />
                     </font>
@@ -101,7 +99,7 @@
                 <Font name="Century Gothic" size="16.0" />
             </font>
         </TextField>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1168.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1260.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@image/147144.png" />
             </image>
@@ -167,96 +165,109 @@
                 <TextField fx:id="fieldstt" layoutX="208.0" layoutY="102.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
             </children>
         </Pane>
-        <Pane fx:id="bantra" layoutX="369.0" layoutY="18.0" prefHeight="630.0" prefWidth="787.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css">
+        <Pane fx:id="bantra" layoutX="451.0" layoutY="12.0" prefHeight="626.0" prefWidth="503.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css" visible="false">
             <children>
-                <Label fx:id="idlabel1" layoutX="266.0" layoutY="14.0" prefHeight="36.0" prefWidth="292.0" style="-fx-alignment: center;" text="Bán">
-                    <font>
-                        <Font name="Century Gothic Bold" size="23.0" />
-                    </font>
-                </Label>
-                <Button layoutX="167.0" layoutY="576.0" mnemonicParsing="false" onAction="#luuban" prefHeight="40.0" prefWidth="82.0" styleClass="BtnThem_create" stylesheets="@../../../MainCSS.css" text="Lưu">
+                <Button layoutX="87.0" layoutY="572.0" mnemonicParsing="false" onAction="#luuban" prefHeight="40.0" prefWidth="82.0" styleClass="BtnThem_create" stylesheets="@../../../MainCSS.css" text="Lưu">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                     </font>
                 </Button>
-                <Button layoutX="558.0" layoutY="576.0" mnemonicParsing="false" onAction="#thoatbantra" prefHeight="40.0" prefWidth="82.0" styleClass="BtnThoat_create" stylesheets="@../../../MainCSS.css" text="Thoát">
+                <Button alignment="CENTER" layoutX="336.0" layoutY="572.0" mnemonicParsing="false" onAction="#thoatbantra" prefHeight="40.0" prefWidth="82.0" styleClass="BtnThoat_create" stylesheets="@../../../MainCSS.css" text="Thoát" textAlignment="CENTER">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                     </font>
                 </Button>
-                <Label layoutX="36.0" layoutY="72.0" prefHeight="31.0" prefWidth="162.0" text="Tên :">
+                <Label layoutX="51.0" layoutY="70.0" prefHeight="25.0" prefWidth="153.0" text="Tên :">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="29.0" layoutY="234.0" prefHeight="31.0" prefWidth="162.0" text="Số điện thoại: ">
+                <Label layoutX="51.0" layoutY="138.0" prefHeight="25.0" prefWidth="119.0" text="Số điện thoại: ">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="29.0" layoutY="155.0" prefHeight="31.0" prefWidth="162.0" text="Địa chỉ: ">
+                <Label layoutX="51.0" layoutY="104.0" prefHeight="25.0" prefWidth="74.0" text="Địa chỉ: ">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="fielddiachiban" layoutX="162.0" layoutY="151.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                <TextField fx:id="fieldtenban" layoutX="162.0" layoutY="68.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                <TextField fx:id="fieldsdtban" layoutX="162.0" layoutY="227.0" prefHeight="45.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                <Label layoutX="558.0" layoutY="108.0" prefHeight="31.0" prefWidth="82.0" text="Ghi chú: ">
+                <Label layoutX="51.0" layoutY="273.0" prefHeight="31.0" prefWidth="82.0" text="Ghi chú: ">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font>
                 </Label>
-                <TextArea fx:id="fieldghichuban" layoutX="487.0" layoutY="155.0" prefHeight="127.0" prefWidth="223.0" />
+                <TextArea fx:id="fieldghichuban" layoutX="203.0" layoutY="242.0" prefHeight="93.0" prefWidth="192.0" style="-fx-background-radius: 20;" />
                 <Label layoutX="46.0" layoutY="64.0" prefHeight="31.0" prefWidth="162.0" text="STT:" visible="false">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font>
                 </Label>
                 <TextField fx:id="fieldsttban" layoutX="199.0" layoutY="59.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" visible="false" />
-            <Line endX="477.199951171875" layoutX="310.0" layoutY="310.0" startX="-310.0" />
-            <Pane layoutX="19.0" layoutY="327.0" prefHeight="154.0" prefWidth="361.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: black; -fx-border-radius: 5;">
-               <children>
-                      <Label layoutX="21.0" layoutY="96.0" prefHeight="31.0" prefWidth="162.0" text="Số Lượng :">
-                          <font>
-                              <Font name="Century Gothic Bold" size="18.0" />
-                          </font>
-                      </Label>
-                      <TextField fx:id="fieldsothungban" layoutX="139.0" layoutY="92.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                      <Label layoutX="21.0" layoutY="25.0" prefHeight="31.0" prefWidth="162.0" text="Loại hàng:">
-                          <font>
-                              <Font name="Century Gothic Bold" size="18.0" />
-                          </font>
-                      </Label>
-                      <ComboBox fx:id="comboban" layoutX="139.0" layoutY="23.0" prefHeight="35.0" prefWidth="192.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="418.0" layoutY="327.0" prefHeight="154.0" prefWidth="361.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: black; -fx-border-radius: 5;">
-               <children>
-                  <Label layoutX="21.0" layoutY="96.0" prefHeight="31.0" prefWidth="162.0" text="Số Lượng :">
-                     <font>
-                        <Font name="Century Gothic Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="fieldsothungban1" layoutX="142.0" layoutY="92.0" prefHeight="40.0" prefWidth="192.0" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-                  <Label layoutX="21.0" layoutY="25.0" prefHeight="31.0" prefWidth="162.0" text="Loại hàng:">
-                     <font>
-                        <Font name="Century Gothic Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="comboban1" layoutX="142.0" layoutY="23.0" prefHeight="35.0" prefWidth="192.0" />
-               </children>
-            </Pane>
-            <Pane layoutX="24.0" layoutY="503.0" prefHeight="45.0" prefWidth="349.0" style="-fx-border-width: 1 1 1 1; -fx-border-color: black; -fx-border-radius: 5;">
-               <children>
-                      <Label layoutX="40.0" layoutY="7.0" prefHeight="31.0" prefWidth="162.0" text="Thu Tiền:">
-                          <font>
-                              <Font name="Century Gothic Bold" size="18.0" />
-                          </font>
-                      </Label>
-                      <TextField fx:id="fieldsotienthu" layoutX="157.0" layoutY="2.0" prefHeight="40.0" prefWidth="185.0" style="-fx-border-radius: 0 0 2 2;" styleClass="txtF" stylesheets="@../../../MainCSS.css" />
-               </children>
-            </Pane>
+            <Label layoutX="204.0" layoutY="70.0" prefHeight="25.0" prefWidth="173.0" text="Đỗ Nguyễn Duy Linh">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="204.0" layoutY="104.0" prefHeight="25.0" prefWidth="285.0" text="Số nhà 1606, Ấp Thạnh Phước 1,sssssssssssssss">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="206.0" layoutY="138.0" prefHeight="25.0" prefWidth="119.0" text="09298828823">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="363.0" prefHeight="31.0" prefWidth="134.0" text="Lóc nước suối: ">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="413.0" prefHeight="31.0" prefWidth="153.0" text="Thùng nước suối:">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER" layoutX="200.0" layoutY="363.0" prefHeight="31.0" prefWidth="198.0" promptText="Hãy nhập số lượng" styleClass="txtF" />
+            <TextField alignment="CENTER" layoutX="203.0" layoutY="413.0" prefHeight="31.0" prefWidth="198.0" promptText="Hãy nhập số lượng" styleClass="txtF" />
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="503.0" styleClass="BgGiaoDich" text="Giao dịch">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+            </Button>
+            <Label layoutX="47.0" layoutY="464.0" prefHeight="31.0" prefWidth="153.0" text="Số tiền thu:">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER" layoutX="200.0" layoutY="464.0" prefHeight="31.0" prefWidth="198.0" promptText="Hãy nhập số tiền đã thu" styleClass="txtF" />
+            <Label layoutX="51.0" layoutY="173.0" prefHeight="25.0" prefWidth="146.0" text="Số thùng mượn: ">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="208.0" layoutY="173.0" prefHeight="25.0" prefWidth="100.0" text="50 Thùng">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="205.0" prefHeight="25.0" prefWidth="119.0" text="Số thùng nợ: ">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="208.0" layoutY="205.0" prefHeight="25.0" prefWidth="100.0" text="50 Thùng">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="511.0" prefHeight="31.0" prefWidth="153.0" text="Số thùng trả:">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER" layoutX="201.0" layoutY="511.0" prefHeight="31.0" prefWidth="198.0" promptText="Hãy nhập số thùng trả" styleClass="txtF" />
             </children>
         </Pane>
         <Pane fx:id="tra" layoutX="478.0" layoutY="44.0" prefHeight="559.0" prefWidth="432.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css" visible="false">

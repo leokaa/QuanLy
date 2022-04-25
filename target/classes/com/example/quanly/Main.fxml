@@ -150,21 +150,21 @@
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dayTong" layoutX="86.0" layoutY="62.0" prefHeight="32.0" prefWidth="125.0" text=" 0" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="dayTong" layoutX="86.0" layoutY="62.0" prefHeight="32.0" prefWidth="125.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
-                        <Font name="Bernard MT Condensed" size="20.0" />
+                        <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
             <Pane layoutX="260.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu1" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label fx:id="MonthRa" layoutX="84.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthRa" layoutX="84.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="MonthVao" layoutX="84.0" layoutY="126.0" prefHeight="32.0" prefWidth="137.0" text="  28  thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthVao" layoutX="84.0" layoutY="126.0" prefHeight="32.0" prefWidth="137.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
@@ -189,7 +189,7 @@
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="MonthTong" layoutX="84.0" layoutY="62.0" prefHeight="32.0" prefWidth="137.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="MonthTong" layoutX="84.0" layoutY="62.0" prefHeight="32.0" prefWidth="137.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="20.0" />
                      </font>
@@ -198,12 +198,12 @@
             </Pane>
             <Pane layoutX="511.0" layoutY="97.0" prefHeight="172.0" prefWidth="235.0" styleClass="BgDoanhThu2" stylesheets="@../../../MainCSS.css">
                <children>
-                  <Label fx:id="yearRa" layoutX="85.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="  30 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="yearRa" layoutX="85.0" layoutY="94.0" prefHeight="32.0" prefWidth="137.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="yearVao" layoutX="85.0" layoutY="126.0" prefHeight="32.0" prefWidth="156.0" text="   28 thùng" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="yearVao" layoutX="85.0" layoutY="126.0" prefHeight="32.0" prefWidth="156.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
                         <Font name="Bernard MT Condensed" size="21.0" />
                      </font>
@@ -228,9 +228,9 @@
                         <Image url="@image/dollar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="YearTong" layoutX="85.0" layoutY="62.0" prefHeight="32.0" prefWidth="150.0" text="  300.000đ" textAlignment="CENTER" textFill="#fffcfc">
+                  <Label fx:id="yearRa1" layoutX="85.0" layoutY="62.0" prefHeight="32.0" prefWidth="137.0" text="0" textAlignment="CENTER" textFill="#fffcfc">
                      <font>
-                        <Font name="Bernard MT Condensed" size="20.0" />
+                        <Font name="Bernard MT Condensed" size="22.0" />
                      </font>
                   </Label>
                </children>
