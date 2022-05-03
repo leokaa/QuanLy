@@ -158,7 +158,7 @@ public class MainController implements Initializable{
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectionDB = connectionNow.getConnect();
 
-        String query = "SELECT  CURDATE(),DT_soluongban AS SLB, DT_soluongtra AS SLT, DT_soluongban*LH_dongia AS DoanhThu\n" +
+        String query = "SELECT  CURDATE(),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, SUM(DT_tongtien) AS DoanhThu\n" +
                 "FROM quanly_doanhthu, quanly_loaihang\n" +
                 "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
                 "AND DT_ngay=CURDATE()\n";
@@ -166,7 +166,7 @@ public class MainController implements Initializable{
         Statement st;
         ResultSet rs;
 
-        String query1 = "SELECT  month(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_soluongban)*LH_dongia AS DoanhThu\n" +
+        String query1 = "SELECT  month(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
                 "FROM quanly_doanhthu, quanly_loaihang\n" +
                 "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
                 "AND  month(DT_ngay) = month(CURRENT_DATE)\n" +
@@ -174,7 +174,7 @@ public class MainController implements Initializable{
         Statement st1;
         ResultSet rs1;
 
-        String query2 = "SELECT  year(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_soluongban)*LH_dongia AS DoanhThu\n" +
+        String query2 = "SELECT  year(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
                 "FROM quanly_doanhthu, quanly_loaihang\n" +
                 "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
                 "AND  year(DT_ngay) = year(CURRENT_DATE)\n" +

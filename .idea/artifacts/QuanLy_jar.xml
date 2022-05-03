@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="QuanLy:jar">
+    <output-path>$PROJECT_DIR$/../</output-path>
+    <root id="archive" name="QuanLy.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17-ea+11/javafx-fxml-17-ea+11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.10.2/jsoup-1.10.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+11/javafx-graphics-17-ea+11-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+11/javafx-base-17-ea+11-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17-ea+11/javafx-fxml-17-ea+11-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+11/javafx-controls-17-ea+11-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17-ea+11/javafx-graphics-17-ea+11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17-ea+11/javafx-base-17-ea+11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../NEW/javaFX/jfoenix-9.0.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../NEW/javaFX/mysql-connector-java-8.0.26/mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17-ea+11/javafx-controls-17-ea+11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jruby/jruby-complete/9.2.6.0/jruby-complete-9.2.6.0.jar" path-in-jar="/" />
+      <element id="module-output" name="QuanLy" />
+    </root>
+  </artifact>
+</component>

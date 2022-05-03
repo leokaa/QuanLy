@@ -3,13 +3,14 @@ package com.example.quanly;
 public class KhachHang {
     private  int stt;
     private String tenkh = null;
-    private String sdt;
+    private String sdt = null;
     private String diachi = null;
     private int sothungno = 0;
+    private int sothungmuon = 0;
     private String sotienno = "";
     private String ghichu =null;
 
-    public KhachHang(int stt,String tenkh, String sdt, String diachi, int sothungno, String sotienno, String ghichu) {
+    public KhachHang(int stt,String tenkh, String sdt, String diachi, int sothungno,int sothungmuon, String sotienno, String ghichu) {
         this.stt = stt;
         this.tenkh = tenkh;
         this.sdt = sdt;
@@ -17,6 +18,15 @@ public class KhachHang {
         this.sothungno = sothungno;
         this.sotienno = sotienno;
         this.ghichu = ghichu;
+        this.sothungmuon=sothungmuon;
+    }
+
+    public int getSothungmuon() {
+        return sothungmuon;
+    }
+
+    public void setSothungmuon(int sothungmuon) {
+        this.sothungmuon = sothungmuon;
     }
 
     public int getStt() {

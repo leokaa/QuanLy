@@ -2,6 +2,8 @@ package com.example.quanly;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -43,6 +46,9 @@ public class DoanhThuController implements Initializable {
     @FXML
     private TableColumn<DoanhThu,String> tongdoanhthucol;
 
+    @FXML
+    private TextField textSearch;
+
     Connection connection = null;
     String query = null;
     DoanhThu doanhThu = null;
@@ -63,11 +69,36 @@ public class DoanhThuController implements Initializable {
 
         try {
             connection = DatabaseConnection.getConnect();
+            Search();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public ObservableList<DoanhThu> getDoanhThu() throws SQLException {
+        ObservableList<DoanhThu> DoanhThuList = FXCollections.observableArrayList();
+        connection = DatabaseConnection.getConnect();
+        query = "SELECT *  FROM `quanly_doanhthu` WHERE 1";
+
+
+        try{
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            Locale localeEN = new Locale("en", "EN");
+            NumberFormat en = NumberFormat.getInstance(localeEN);
+
+            while (resultSet.next()){
+                doanhThu  = new DoanhThu(resultSet.getString("DT_ngay"),resultSet.getInt("DT_soluongban"),resultSet.getInt("DT_soluongtra"),resultSet.getString("LH_malh"),resultSet.getString("DT_tongtien"));
+                DoanhThuList.add(doanhThu);
+            }
+
+        }catch (Exception exception){
+            exception.printStackTrace();
+            exception.getCause();
+        }
+        return DoanhThuList;
     }
 
 
@@ -78,7 +109,7 @@ public class DoanhThuController implements Initializable {
         ngaycol.setText("Tháng");
         doanhthuList.clear();
 
-        query = "SELECT month(DT_ngay),year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra) FROM `quanly_doanhthu` WHERE 1 GROUP BY month(DT_ngay),year(DT_ngay), LH_malh";
+        query = "SELECT month(DT_ngay),year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra),sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY month(DT_ngay),year(DT_ngay), LH_malh";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
 
@@ -94,12 +125,9 @@ public class DoanhThuController implements Initializable {
                     resultSet.getInt("SUM(DT_soluongban)"),
                     resultSet.getInt("sum(DT_soluongtra)"),
                     maLH,
-                    en.format(resultSet1.getInt("LH_dongia") * resultSet.getInt("SUM(DT_soluongban)") )));
+                    en.format(resultSet.getInt("sum(DT_tongtien)"))));
             tableView.setItems(doanhthuList);
         }
-
-
-
     }
 
     public void showTable_Ngay(ActionEvent event) throws Exception {
@@ -125,7 +153,7 @@ public class DoanhThuController implements Initializable {
                     resultSet.getInt("DT_soluongban"),
                     resultSet.getInt("DT_soluongtra"),
                     maLH,
-                    en.format(resultSet1.getInt("LH_dongia") * resultSet.getInt("DT_soluongban") )));
+                    en.format(resultSet.getInt("DT_tongtien"))));
             tableView.setItems(doanhthuList);
         }
 
@@ -134,28 +162,45 @@ public class DoanhThuController implements Initializable {
     public void showTable_Nam(ActionEvent event) throws Exception {
         doanhthuList.clear();
         ngaycol.setText("Năm");
-        query = "SELECT year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra) FROM `quanly_doanhthu` WHERE 1 GROUP BY year(DT_ngay), LH_malh";
+        query = "SELECT year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra), sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY year(DT_ngay), LH_malh";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
             String maLH = resultSet.getString("LH_malh");
 
-            query = "SELECT * FROM  `quanly_loaihang` Where LH_malh = '"+maLH+"'";
-            preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet1 = preparedStatement.executeQuery();
-            resultSet1.next();
+
             doanhthuList.add(new DoanhThu(
                     resultSet.getString("year(DT_ngay)"),
                     resultSet.getInt("SUM(DT_soluongban)"),
                     resultSet.getInt("sum(DT_soluongtra)"),
                     maLH,
-                    en.format(resultSet1.getInt("LH_dongia") * resultSet.getInt("SUM(DT_soluongban)") )));
+                    en.format(resultSet.getInt("sum(DT_tongtien)") )));
             tableView.setItems(doanhthuList);
         }
 
 
 
+    }
+
+    public void Search() throws SQLException {
+        ObservableList<DoanhThu> doanhthuList = getDoanhThu();
+        FilteredList<DoanhThu> filteredList = new FilteredList<>(doanhthuList, b->true);
+        textSearch.textProperty().addListener((observable, oldVale, newValue) -> {
+            filteredList.setPredicate(DoanhThu->{
+                if(newValue.isEmpty() || newValue.isBlank() || newValue==null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                if (DoanhThu.getNgay().toLowerCase().indexOf(searchKeyword) >-1)
+                    return true;
+                else
+                    return false;
+            });
+        });
+        SortedList<DoanhThu> sort = new SortedList<>(filteredList);
+        sort.comparatorProperty().bind(tableView.comparatorProperty());
+        tableView.setItems(sort);
     }
     //------------------------------------------Các nút menu------------------------------------------\\
     public void sceneTrangChu(ActionEvent event) throws Exception{
