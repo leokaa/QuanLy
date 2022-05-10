@@ -17,11 +17,6 @@
     <children>
         <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
-                <Label layoutX="46.0" layoutY="14.0" prefHeight="40.0" prefWidth="89.0" text="Logo" textFill="WHITE">
-                    <font>
-                        <Font name="Century Gothic Bold" size="35.0" />
-                    </font>
-                </Label>
                 <Button fx:id="Btn_trangchu" layoutX="10.0" layoutY="137.0" mnemonicParsing="false" onAction="#sceneTrangChu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
                     <font>
                         <Font name="Century Gothic Bold" size="15.0" />
@@ -59,6 +54,16 @@
                         <Image url="@image/van-black-side-view.png" />
                     </image>
                 </ImageView>
+            <Label layoutX="41.0" layoutY="43.0" prefHeight="45.0" prefWidth="89.0" styleClass="fontLoGo" text="Như Ý" textFill="#e43a3a">
+               <font>
+                  <Font name="Stencil" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="14.0" prefHeight="45.0" prefWidth="149.0" styleClass="fontLoGo" text="Nước Suối " textFill="#e43a3a">
+               <font>
+                  <Font name="Stencil" size="29.0" />
+               </font>
+            </Label>
             </children></Pane>
         <Pane layoutX="192.0" layoutY="57.0" prefHeight="597.0" prefWidth="794.0" style="-fx-background-color: E6E6E6;">
             <children>

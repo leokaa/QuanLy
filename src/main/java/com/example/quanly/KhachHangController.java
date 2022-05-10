@@ -1,5 +1,8 @@
 package com.example.quanly;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -45,6 +48,9 @@ public class KhachHangController  implements Initializable {
 
     @FXML
     private TableColumn<KhachHang,String> sdtcol;
+
+    @FXML
+    private TableColumn<String,Integer> sttcol1;
 
     @FXML
     private TableColumn<KhachHang,String> diachicol;
@@ -138,6 +144,10 @@ public class KhachHangController  implements Initializable {
     private TextField fielddongiathung;
     @FXML
     private Label stt;
+    @FXML
+    private Pane GiaoDich;
+    @FXML
+    private Button btnThoatLishSu;
 
     private  boolean update;
     Connection connection = null;
@@ -251,7 +261,24 @@ public class KhachHangController  implements Initializable {
     }
     public void showTable() throws SQLException {
         ObservableList<KhachHang> hangnhapList = getKhachhang();
-        sttcol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("stt"));
+
+        sttcol1.setCellFactory(col -> {
+            TableCell<String, Integer> indexCell = new TableCell<>();
+            ReadOnlyObjectProperty<TableRow<String>> rowProperty = indexCell.tableRowProperty();
+            ObjectBinding<String> rowBinding = Bindings.createObjectBinding(() -> {
+                TableRow<String> row = rowProperty.get();
+                if (row != null) {
+                    int rowIndex = row.getIndex();
+                    if (rowIndex < row.getTableView().getItems().size()) {
+                        return Integer.toString(rowIndex);
+                    }
+                }
+                return null;
+            }, rowProperty);
+            indexCell.textProperty().bind(rowBinding);
+            return indexCell;
+        });
+
         tencol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("tenkh"));
         sdtcol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sdt"));
         diachicol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("diachi"));
@@ -259,7 +286,6 @@ public class KhachHangController  implements Initializable {
         notiencol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sotienno"));
         ghichucol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("ghichu"));
         muonthung.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sothungmuon"));
-
 
 
         Callback<TableColumn<KhachHang,String>, TableCell<KhachHang,String>> cellFoctory = (TableColumn<KhachHang,String> param )-> {
@@ -274,17 +300,21 @@ public class KhachHangController  implements Initializable {
                     else {
                         //TableCell<SinhVien, String> cell = new TableCell<>();
 
-                        Button editButton = new Button("Sửa");
+                        Button editButton = new Button("Sử");
                         editButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        Button deleteButton = new Button("Xóa");
+                        Button deleteButton = new Button("Xó");
                         deleteButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        Button giaodichButton = new Button("Giao dịch");
+                        Button giaodichButton = new Button("Gi");
                         giaodichButton.setStyle("-fx-background-color: #6EBF8B; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
+                        Button lichsuButton = new Button("Ls");
+                        lichsuButton.setStyle("-fx-background-color: #74e0d0; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        HBox manageButton = new HBox( editButton, deleteButton,giaodichButton);
+
+
+                        HBox manageButton = new HBox( editButton, deleteButton,giaodichButton,lichsuButton);
                         manageButton.setStyle("-fx-alignment:center");
                         setGraphic(manageButton);
 
@@ -363,6 +393,11 @@ public class KhachHangController  implements Initializable {
                             sothungtra.setText("");
                             ghichu.setText(khachHang.getGhichu());
                         });
+
+                        lichsuButton.setOnMouseClicked((MouseEvent event)->{
+                            GiaoDich.setVisible(true);
+                        });
+
 
 
                     }
@@ -494,7 +529,7 @@ public class KhachHangController  implements Initializable {
         int sothungno  = resultSet.getInt("KH_sothungno");
         int thungno = sothungno;
         if(sothung !=0) {
-            thungno=sothung + sothungno - sothungmuon;
+            thungno=sothung + sothungno;
         }
         int tienno = sothung * dongiathung + soloc*dongialoc - sotien+noton;
 
@@ -615,4 +650,9 @@ public class KhachHangController  implements Initializable {
 //        tra.setVisible(false);
 //        showTable();
 //    }
+
+    public void thoatGiaoDich(ActionEvent event){
+        GiaoDich.setVisible(false);
+    }
+
 }

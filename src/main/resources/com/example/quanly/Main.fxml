@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,50 +18,63 @@
    <children>
       <Pane prefHeight="655.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
          <children>
-            <Label layoutX="46.0" layoutY="14.0" prefHeight="40.0" prefWidth="89.0" text="Logo" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic Bold" size="35.0" />
-               </font>
-            </Label>
-            <Button fx:id="Btn_trangchu" layoutX="10.0" layoutY="137.0" mnemonicParsing="false" onAction="#sceneTrangChu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
+            <Button fx:id="Btn_trangchu" layoutX="10.0" layoutY="157.0" mnemonicParsing="false" onAction="#sceneTrangChu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Trang chủ" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
-            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/home.png" />
                </image>
             </ImageView>
-            <Button fx:id="Btn_doanhthu" layoutX="10.0" layoutY="191.0" mnemonicParsing="false" onAction="#sceneDoanhThu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
+            <Button fx:id="Btn_doanhthu" layoutX="10.0" layoutY="211.0" mnemonicParsing="false" onAction="#sceneDoanhThu" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Doanh thu" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
-            <Button fx:id="Btn_khachhang" layoutX="10.0" layoutY="245.0" mnemonicParsing="false" onAction="#sceneKhachHang" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
+            <Button fx:id="Btn_khachhang" layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#sceneKhachHang" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Khách hàng" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font></Button>
-            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/coin.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="14.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/user.png" />
                </image>
             </ImageView>
-            <Button fx:id="Btn_hangnhap" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#sceneHangNhap" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
+            <Button fx:id="Btn_hangnhap" layoutX="10.0" layoutY="317.0" mnemonicParsing="false" onAction="#sceneHangNhap" prefHeight="31.0" prefWidth="173.0" styleClass="BtnMenu" stylesheets="@../../../MainCSS.css" text="Hàng nhập" textAlignment="CENTER">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
             </Button>
-            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="13.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/van-black-side-view.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="72.0" layoutX="4.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" styleClass="fontLoGo">
+               <image>
+                  <Image url="@image/Blue_Company_Water_Drop_Logo_-removebg-preview.png" />
+               </image>
+               <effect>
+                  <Reflection fraction="0.0" topOpacity="0.0" />
+               </effect>
+            </ImageView>
+            <Label layoutX="79.0" layoutY="35.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
+               <font>
+                  <Font name="Harlow Solid Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="77.0" prefHeight="28.0" prefWidth="118.0" styleClass="fontLoGo1" text="Bạn của mọi nhà" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="15.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <Pane layoutX="192.0" layoutY="57.0" prefHeight="597.0" prefWidth="774.0" style="-fx-background-color: E6E6E6;">
+      <Pane layoutX="192.0" layoutY="46.0" prefHeight="603.0" prefWidth="775.0" style="-fx-background-color: E6E6E6;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="459.0" text="Welcome to the Nhu Y store !" textAlignment="CENTER">
                <font>

@@ -130,10 +130,9 @@ public class MainController implements Initializable{
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectionDB = connectionNow.getConnect();
         String query = "\n" +
-                "SELECT month(DT_ngay), SUM(DT_soluongban)*quanly_loaihang.LH_dongia AS ThanhTien\n" +
-                "FROM `quanly_doanhthu`, `quanly_loaihang`\n" +
-                "WHERE quanly_doanhthu.LH_malh=quanly_loaihang.LH_malh\n" +
-                "and 1 GROUP BY month(DT_ngay)\n" +
+                "SELECT month(DT_ngay), sum(DT_tongtien) \n" +
+                "FROM `quanly_doanhthu` \n" +
+                "WHERE 1 GROUP BY month(DT_ngay)" +
                 "\n";
         Statement st;
         ResultSet rs;
@@ -158,27 +157,24 @@ public class MainController implements Initializable{
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectionDB = connectionNow.getConnect();
 
-        String query = "SELECT  CURDATE(),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, SUM(DT_tongtien) AS DoanhThu\n" +
-                "FROM quanly_doanhthu, quanly_loaihang\n" +
-                "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
-                "AND DT_ngay=CURDATE()\n";
+        String query = "SELECT DT_ngay, SUM(DT_soluongban) as SLB, sum(DT_soluongtra) as SLT , sum(DT_tongtien) as DoanhThu \n" +
+                "FROM `quanly_doanhthu` \n" +
+                "WHERE DT_ngay = CURRENT_DATE \n" +
+                "and 1 GROUP BY DT_ngay\n";
 
         Statement st;
         ResultSet rs;
 
         String query1 = "SELECT  month(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
-                "FROM quanly_doanhthu, quanly_loaihang\n" +
-                "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
-                "AND  month(DT_ngay) = month(CURRENT_DATE)\n" +
-                "GROUP BY month(CURRENT_DATE)\n";
+                "FROM quanly_doanhthu\n" +
+                "WHERE month(DT_ngay) = month(CURRENT_DATE)\n" +
+                "and 1 GROUP BY month(CURRENT_DATE)\n";
         Statement st1;
         ResultSet rs1;
 
-        String query2 = "SELECT  year(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
-                "FROM quanly_doanhthu, quanly_loaihang\n" +
-                "WHERE quanly_doanhthu.Lh_malh=quanly_loaihang.LH_malh\n" +
-                "AND  year(DT_ngay) = year(CURRENT_DATE)\n" +
-                "GROUP BY year(CURRENT_DATE)\n";
+        String query2 = "SELECT year(DT_ngay), SUM(DT_soluongban) as SLB, sum(DT_soluongtra) as SLT, sum(DT_tongtien) as DoanhThu \n" +
+                "FROM `quanly_doanhthu` \n" +
+                "WHERE 1 GROUP BY year(DT_ngay)";
         Statement st2;
         ResultSet rs2;
 

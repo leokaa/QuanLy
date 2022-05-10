@@ -1,7 +1,20 @@
 
 .BgLeft{
     -fx-background-color: linear-gradient(to bottom,#2980b9,#2c3e50);
+
 }
+
+.fontLoGo{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0.6, 0.3, 0.5);
+    /*-fx-border-color: #FFFFFF;*/
+    /*-fx-border-width: 0 0 2 0;*/
+
+}
+
+.fontLoGo1{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 8, 0.2, 0.2, 0.2);
+}
+
 
 .BgLich{
     -fx-border-color: #6F6F6F;
