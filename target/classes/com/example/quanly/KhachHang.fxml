@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="647.0" prefWidth="1222.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
+<AnchorPane prefHeight="647.0" prefWidth="1222.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
     <children>
         <Pane prefHeight="659.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
@@ -89,25 +89,26 @@
                         <Font name="Century Gothic Bold" size="21.0" />
                     </font>
                 </Label>
-            <Pane fx:id="GiaoDich" layoutX="162.0" layoutY="14.0" prefHeight="418.0" prefWidth="861.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css" visible="false">
+            <Pane fx:id="GiaoDich" layoutX="162.0" layoutY="14.0" prefHeight="418.0" prefWidth="927.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css" visible="false">
                <children>
                   <Label layoutX="13.0" layoutY="14.0" prefHeight="28.0" prefWidth="220.0" text="Tên: Linh">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="13.0" layoutY="67.0" prefHeight="337.0" prefWidth="835.0">
+                  <TableView fx:id="tableView1" layoutX="13.0" layoutY="67.0" prefHeight="337.0" prefWidth="905.0">
                     <columns>
                         <TableColumn prefWidth="141.5999755859375" text="STT" visible="false" />
-                        <TableColumn prefWidth="141.5999755859375" text="Ngày giao dịch" />
-                        <TableColumn prefWidth="137.5999755859375" text="Số lượng lóc mua" />
-                        <TableColumn minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng mua" />
-                        <TableColumn minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng trả" />
-                        <TableColumn minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền trả" />
-                        <TableColumn minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền nợ" />
+                        <TableColumn fx:id="ngaygiaodichcol" prefWidth="141.5999755859375" text="Ngày giao dịch" />
+                        <TableColumn fx:id="soloccol" prefWidth="137.5999755859375" text="Số lượng lóc mua" />
+                        <TableColumn fx:id="sothungmuacol" minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng mua" />
+                        <TableColumn fx:id="sothungtracol" minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng trả" />
+                        <TableColumn fx:id="sotientracol" minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền trả" />
+                        <TableColumn fx:id="sotiennocol" minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền nợ" />
+                        <TableColumn fx:id="thucthi" minWidth="0.0" prefWidth="88.0" text="Thực Thi" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btnThoatLishSu" layoutX="795.0" layoutY="11.0" mnemonicParsing="false" onAction="#thoatGiaoDich" text="Button" />
+                  <Button fx:id="btnThoatLishSu" layoutX="795.0" layoutY="11.0" mnemonicParsing="false" onAction="#thoatGiaoDich" text="Thoát" />
                </children>
             </Pane>
             </children>
