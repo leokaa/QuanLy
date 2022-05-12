@@ -7,18 +7,28 @@ public class KhachHang {
     private String diachi = null;
     private int sothungno = 0;
     private int sothungmuon = 0;
+    private String tienban = "";
     private String sotienno = "";
     private String ghichu =null;
 
-    public KhachHang(int stt,String tenkh, String sdt, String diachi, int sothungno,int sothungmuon, String sotienno, String ghichu) {
+    public KhachHang(int stt, String tenkh, String sdt, String diachi, int sothungno, int sothungmuon, String tienban, String sotienno, String ghichu) {
         this.stt = stt;
         this.tenkh = tenkh;
         this.sdt = sdt;
         this.diachi = diachi;
         this.sothungno = sothungno;
+        this.sothungmuon = sothungmuon;
+        this.tienban = tienban;
         this.sotienno = sotienno;
         this.ghichu = ghichu;
-        this.sothungmuon=sothungmuon;
+    }
+
+    public String getTienban() {
+        return tienban;
+    }
+
+    public void setTienban(String tienban) {
+        this.tienban = tienban;
     }
 
     public int getSothungmuon() {

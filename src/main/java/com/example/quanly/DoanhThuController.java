@@ -88,9 +88,12 @@ public class DoanhThuController implements Initializable {
             resultSet = preparedStatement.executeQuery();
             Locale localeEN = new Locale("en", "EN");
             NumberFormat en = NumberFormat.getInstance(localeEN);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            resultSet.next();
+            String formattedDate = formatter.format(resultSet.getDate("DT_ngay"));
 
             while (resultSet.next()){
-                doanhThu  = new DoanhThu(resultSet.getString("DT_ngay"),resultSet.getInt("DT_soluongban"),resultSet.getInt("DT_soluongtra"),resultSet.getString("LH_malh"),resultSet.getString("DT_tongtien"));
+                doanhThu  = new DoanhThu(formattedDate,resultSet.getInt("DT_soluongban"),resultSet.getInt("DT_soluongtra"),resultSet.getString("LH_malh"),resultSet.getString("DT_tongtien"));
                 DoanhThuList.add(doanhThu);
             }
 

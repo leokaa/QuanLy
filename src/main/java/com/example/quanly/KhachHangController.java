@@ -28,6 +28,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -38,7 +39,7 @@ import java.util.logging.Logger;
 
 public class KhachHangController  implements Initializable {
     KhachHang khachHang = null ;
-
+    ChiTietKhachHang chiTietKhachHang = null;
     @FXML
     private Button idlabel;
     @FXML
@@ -66,6 +67,8 @@ public class KhachHangController  implements Initializable {
 
     @FXML
     private TableColumn<KhachHang,String> muonthung;
+    @FXML
+    private TableColumn<KhachHang,String>tienban;
     @FXML
     TableColumn<KhachHang,String> thucthicol;
 
@@ -100,22 +103,8 @@ public class KhachHangController  implements Initializable {
     @FXML
     private TextArea ghichu;
 
-    @FXML
-    private Pane tra;
-    @FXML
-    private TextField fieldstttra;
-    @FXML
-    private TextField fieldsothungtra;
-    @FXML
-    private TextField fieldsotientra;
-    @FXML
-    private TextField fielddiachitra;
-    @FXML
-    private TextArea fieldghichutra;
-    @FXML
-    private  TextField fieldtentra;
-    @FXML
-    private TextField fieldsdttra;
+
+
 
     @FXML
     private Label ten;
@@ -148,6 +137,36 @@ public class KhachHangController  implements Initializable {
     private Pane GiaoDich;
     @FXML
     private Button btnThoatLishSu;
+
+    @FXML
+    private TableView<ChiTietKhachHang> tableView1;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> ngaygiaodichcol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> soloccol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> sothungmuacol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> sothungtracol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> sotientracol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> sotiennocol;
+    @FXML
+    private TableColumn<ChiTietKhachHang,String> thucthi;
+
+    @FXML
+    private Label chitietngay;
+    @FXML
+    private TextField chitietsoloc;
+    @FXML
+    private TextField chitietsothungmua;
+    @FXML
+    private TextField chitietsothungtra;
+    @FXML
+    private TextField chitietsotientra;
+    @FXML
+    private TextField chitietsotienno;
 
     private  boolean update;
     Connection connection = null;
@@ -249,7 +268,7 @@ public class KhachHangController  implements Initializable {
             NumberFormat en = NumberFormat.getInstance(localeEN);
 
             while (resultSet.next()){
-                khachHang = new KhachHang(resultSet.getInt("KH_stt"),resultSet.getString("KH_tenkh"),resultSet.getString("KH_sdt"),resultSet.getString("KH_diachi"),resultSet.getInt("KH_sothungno"),resultSet.getInt("KH_sothungmuon"),en.format(resultSet.getInt("KH_sotienno")),resultSet.getString("KH_ghichu"));
+                khachHang = new KhachHang(resultSet.getInt("KH_stt"),resultSet.getString("KH_tenkh"),resultSet.getString("KH_sdt"),resultSet.getString("KH_diachi"),resultSet.getInt("KH_sothungno"),resultSet.getInt("KH_sothungmuon"),en.format(resultSet.getInt("KH_tienban")),en.format(resultSet.getInt("KH_sotienno")),resultSet.getString("KH_ghichu"));
                 HangNhapList.add(khachHang);
             }
 
@@ -258,6 +277,120 @@ public class KhachHangController  implements Initializable {
             exception.getCause();
         }
         return HangNhapList;
+    }
+    public ObservableList<ChiTietKhachHang> getCTKH(int stt) throws SQLException {
+        ObservableList<ChiTietKhachHang> list = FXCollections.observableArrayList();
+        connection = DatabaseConnection.getConnect();
+        query = "SELECT * FROM `quanly_chitietkhachhang` WHERE KH_stt="+stt;
+
+
+        try{
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            Locale localeEN = new Locale("en", "EN");
+            NumberFormat en = NumberFormat.getInstance(localeEN);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+            while (resultSet.next()){
+                String formattedDate = formatter.format(resultSet.getDate("CTKH_ngay"));
+                chiTietKhachHang = new ChiTietKhachHang(resultSet.getInt("KH_stt"),resultSet.getInt("CTKH_stt"),formattedDate,resultSet.getInt("CTKH_soloc"),resultSet.getInt("CTKH_sothungmua"),resultSet.getInt("CTKH_sothungtra"),en.format(resultSet.getInt("CTKH_sotientra")),en.format(resultSet.getInt("CTKH_sotienno")));
+                list.add(chiTietKhachHang);
+            }
+
+        }catch (Exception exception){
+            exception.printStackTrace();
+            exception.getCause();
+        }
+        return list;
+    }
+    public  void showTableDG(int stt) throws SQLException {
+        ObservableList<ChiTietKhachHang> list = getCTKH(stt);
+        ngaygiaodichcol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("ngay"));
+        soloccol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("soloc"));
+        sothungmuacol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sothungmua"));
+        sothungtracol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sothungtra"));
+        sotientracol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sotientra"));
+        sotiennocol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sotienno"));
+
+//        Callback<TableColumn<ChiTietKhachHang,String>, TableCell<ChiTietKhachHang,String>> cellFoctory = (TableColumn<ChiTietKhachHang,String> param )-> {
+//            final TableCell<ChiTietKhachHang, String> cell = new TableCell<ChiTietKhachHang, String>() {
+//                @Override
+//                public void updateItem(String item, boolean empty) {
+//                    super.updateItem(item, empty);
+//                    if (empty) {
+//                        setGraphic(null);
+//
+//                    } else {
+//                        Button delButton = new Button("Xóa");
+//                        delButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+//
+////                        Button suaButton = new Button("Xó");
+////                        suaButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+//
+//                        HBox manageButton = new HBox(delButton);
+//                        manageButton.setStyle("-fx-alignment:center");
+//                        setGraphic(manageButton);
+//
+//                        delButton.setOnMouseClicked((MouseEvent event) -> {
+//                            try {
+//
+////                              Dieu kien de loc ma lh
+//
+//                                chiTietKhachHang = getTableView().getItems().get(getIndex());
+////                                System.out.println(hangnhap);
+//                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                                alert.setTitle("Cảnh báo");
+//                                //alert.setHeaderText("Bạn có chắc muốn xóa loại hành: "+hangnhap.getTen_LH()+" ?");
+//                                alert.setHeaderText("Bạn có chắc muốn xóa không!");
+//                                ButtonType btT1 = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+//                                ButtonType btT2 = new ButtonType("No", ButtonBar.ButtonData.NO);
+//
+//                                alert.getButtonTypes().setAll(btT1, btT2);
+//                                Optional<ButtonType> result = alert.showAndWait();
+//
+//                                if (result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+//                                    String query = "DELETE FROM `quanly_chitietkhachhang` WHERE CTKH_stt = " + chiTietKhachHang.getSttkh();
+//                                    System.out.println(query);
+//                                    DatabaseConnection connectionNow = new DatabaseConnection();
+//                                    Connection connectionDB = connectionNow.getConnect();
+//                                    preparedStatement = connectionDB.prepareStatement(query);
+//                                    preparedStatement.execute();
+//                                    String query1 ="UPDATE `quanly_doanhthu` SET `DT_soluongban`=`DT_soluongban`-"+chiTietKhachHang.+"'[value-2]',`DT_soluongtra`='[value-3]',`LH_malh`='[value-4]',`DT_tongtien`='[value-5]' WHERE 1";
+//                                    showTable();
+//                                }
+//
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(HangNhapController.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                        });
+////                        suaButton.setOnMouseClicked((MouseEvent event) -> {
+////
+////                            chiTietKhachHang = getTableView().getItems().get(getIndex());
+////                            try {
+////                                connection  = DatabaseConnection.getConnect();
+////                                query = " SELECT * FROM `quanly_chitietkhachhang` Where KH_stt = "+ chiTietKhachHang.getSttkh();
+////                                resultSet = preparedStatement.executeQuery(query);
+////                                resultSet.next();
+////                                chitietsotientra.setText(String.valueOf(resultSet.getInt("CTKH_sotientra")));
+////                                chitietsotienno.setText(String.valueOf(resultSet.getInt("CTKH_sotienno")));
+////                            } catch (SQLException e) {
+////                                e.printStackTrace();
+////                            }
+////                            chitietngay.setText(chiTietKhachHang.getNgay());
+////                            chitietsoloc.setText(String.valueOf(chiTietKhachHang.getSoloc()));
+////                            chitietsothungmua.setText(String.valueOf(chiTietKhachHang.getSothungmua()));
+////                            chitietsothungtra.setText(String.valueOf(chiTietKhachHang.getSothungtra()));
+////                        });
+//
+//                    }
+//                    setText(null);
+//                }
+//            };
+//                return cell;
+//        };
+//        thucthi.setCellFactory(cellFoctory);
+        tableView1.setItems(list);
     }
     public void showTable() throws SQLException {
         ObservableList<KhachHang> hangnhapList = getKhachhang();
@@ -286,6 +419,8 @@ public class KhachHangController  implements Initializable {
         notiencol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sotienno"));
         ghichucol.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("ghichu"));
         muonthung.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sothungmuon"));
+        tienban.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("tienban"));
+
 
 
         Callback<TableColumn<KhachHang,String>, TableCell<KhachHang,String>> cellFoctory = (TableColumn<KhachHang,String> param )-> {
@@ -395,7 +530,13 @@ public class KhachHangController  implements Initializable {
                         });
 
                         lichsuButton.setOnMouseClicked((MouseEvent event)->{
+                            khachHang = getTableView().getItems().get(getIndex());
                             GiaoDich.setVisible(true);
+                            try {
+                                showTableDG(khachHang.getStt());
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
                         });
 
 
@@ -533,11 +674,11 @@ public class KhachHangController  implements Initializable {
         }
         int tienno = sothung * dongiathung + soloc*dongialoc - sotien+noton;
 
-        query = "UPDATE `quanly_khachhang` SET `KH_sothungno`=" + thungno + ",`KH_sotienno`=" + tienno + ",`KH_ghichu`='" + ghichu1 + "' WHERE KH_stt =" + sttgiaodich;
+        query = "UPDATE `quanly_khachhang` SET `KH_sothungno`=" + thungno + ",`KH_sotienno`=" + tienno + ",`KH_ghichu`='" + ghichu1 + "',`KH_tienban`=`KH_tienban`+"+ sotien +" WHERE KH_stt =" + sttgiaodich;
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.execute();
 
-
+        query = "INSERT INTO `quanly_chitietkhachhang`(`CTKH_ngay`, `CTKH_soloc`, `CTKH_sothungmua`, `CTKH_sothungtra`, `CTKH_sotientra`, `CTKH_sotienno`, `KH_stt`) VALUES(CURRENT_DATE ,"+soloc+","+sothung+","+sothungtra1+","+sotien+","+tienno+","+sttgiaodich+") ;";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.execute();
 
@@ -612,9 +753,7 @@ public class KhachHangController  implements Initializable {
 //
 //        }
 //    }
-    public void thoattra(ActionEvent event){
-        tra.setVisible(false);
-    }
+
 //    public void luutra(ActionEvent event) throws SQLException {
 //        String stt = fieldstttra.getText();
 //        String ghichu = fieldghichu.getText();
