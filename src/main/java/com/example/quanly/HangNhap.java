@@ -3,6 +3,7 @@ package com.example.quanly;
 import java.util.Date;
 
 public class HangNhap {
+    private int stt;
     private Date NgayNhap;
     private String Ten_LH;
     private int SoLuong;
@@ -10,13 +11,22 @@ public class HangNhap {
     private int ThanhTien;
     private String GhiChu;
 
-    public HangNhap(Date ngayNhap,String Ten_LH, int soLuong,int DonGia,int ThanhTien, String ghiChu) {
-        this.NgayNhap = ngayNhap;
-        this.Ten_LH = Ten_LH;
-        this.SoLuong = soLuong;
-        this.ThanhTien = ThanhTien;
-        this.GhiChu = ghiChu;
-        this.DonGia=DonGia;
+    public HangNhap(int stt, Date ngayNhap, String ten_LH, int soLuong, int donGia, int thanhTien, String ghiChu) {
+        this.stt = stt;
+        NgayNhap = ngayNhap;
+        Ten_LH = ten_LH;
+        SoLuong = soLuong;
+        DonGia = donGia;
+        ThanhTien = thanhTien;
+        GhiChu = ghiChu;
+    }
+
+    public int getStt() {
+        return stt;
+    }
+
+    public void setStt(int stt) {
+        this.stt = stt;
     }
 
     public HangNhap() {

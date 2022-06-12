@@ -80,20 +80,19 @@ public class DoanhThuController implements Initializable {
     public ObservableList<DoanhThu> getDoanhThu() throws SQLException {
         ObservableList<DoanhThu> DoanhThuList = FXCollections.observableArrayList();
         connection = DatabaseConnection.getConnect();
-        query = "SELECT *  FROM `quanly_doanhthu` WHERE 1";
-
+        query = "SELECT *  FROM `quanly_doanhthu`";
 
         try{
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             Locale localeEN = new Locale("en", "EN");
             NumberFormat en = NumberFormat.getInstance(localeEN);
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            resultSet.next();
             String formattedDate = formatter.format(resultSet.getDate("DT_ngay"));
 
             while (resultSet.next()){
-                doanhThu  = new DoanhThu(formattedDate,resultSet.getInt("DT_soluongban"),resultSet.getInt("DT_soluongtra"),resultSet.getString("LH_malh"),resultSet.getString("DT_tongtien"));
+                doanhThu  = new DoanhThu(formattedDate,resultSet.getInt("DT_sothungban"),resultSet.getInt("DT_sothungtra"),resultSet.getInt("DT_solocban"),resultSet.getString("DT_tongtien"));
                 DoanhThuList.add(doanhThu);
             }
 
@@ -112,22 +111,16 @@ public class DoanhThuController implements Initializable {
         ngaycol.setText("Tháng");
         doanhthuList.clear();
 
-        query = "SELECT month(DT_ngay),year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra),sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY month(DT_ngay),year(DT_ngay), LH_malh";
+        query = "SELECT month(DT_ngay),year(DT_ngay), SUM(DT_solocban), SUM(DT_sothungban), sum(DT_sothungtra),sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY month(DT_ngay),year(DT_ngay)";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
-            String maLH = resultSet.getString("LH_malh");
-
-            query = "SELECT * FROM  `quanly_loaihang` Where LH_malh ='" +maLH+"'";
-            preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet1 = preparedStatement.executeQuery();
-            resultSet1.next();
             doanhthuList.add(new DoanhThu(resultSet.getString("month(DT_ngay)")+"/"+
                     resultSet.getString("year(DT_ngay)"),
-                    resultSet.getInt("SUM(DT_soluongban)"),
-                    resultSet.getInt("sum(DT_soluongtra)"),
-                    maLH,
+                    resultSet.getInt("SUM(DT_sothungban)"),
+                    resultSet.getInt("sum(DT_sothungtra)"),
+                    resultSet.getInt("SUM(DT_solocban)"),
                     en.format(resultSet.getInt("sum(DT_tongtien)"))));
             tableView.setItems(doanhthuList);
         }
@@ -143,19 +136,14 @@ public class DoanhThuController implements Initializable {
         resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
-            String maLH = resultSet.getString("LH_malh");
 
-            query = "SELECT * FROM  `quanly_loaihang` Where LH_malh = '"+maLH+"'";
-            preparedStatement = connection.prepareStatement(query);
-            ResultSet resultSet1 = preparedStatement.executeQuery();
-            resultSet1.next();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String formattedDate = formatter.format(resultSet.getDate("DT_ngay"));
             doanhthuList.add(new DoanhThu(formattedDate
                     ,
-                    resultSet.getInt("DT_soluongban"),
-                    resultSet.getInt("DT_soluongtra"),
-                    maLH,
+                    resultSet.getInt("DT_sothungban"),
+                    resultSet.getInt("DT_sothungtra"),
+                    resultSet.getInt("DT_solocban"),
                     en.format(resultSet.getInt("DT_tongtien"))));
             tableView.setItems(doanhthuList);
         }
@@ -165,19 +153,18 @@ public class DoanhThuController implements Initializable {
     public void showTable_Nam(ActionEvent event) throws Exception {
         doanhthuList.clear();
         ngaycol.setText("Năm");
-        query = "SELECT year(DT_ngay), LH_malh, SUM(DT_soluongban), sum(DT_soluongtra), sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY year(DT_ngay), LH_malh";
+        query = "SELECT year(DT_ngay), SUM(DT_solocban), SUM(DT_sothungban), sum(DT_sothungtra), sum(DT_tongtien) FROM `quanly_doanhthu` WHERE 1 GROUP BY year(DT_ngay)";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
-            String maLH = resultSet.getString("LH_malh");
 
 
             doanhthuList.add(new DoanhThu(
                     resultSet.getString("year(DT_ngay)"),
-                    resultSet.getInt("SUM(DT_soluongban)"),
-                    resultSet.getInt("sum(DT_soluongtra)"),
-                    maLH,
+                    resultSet.getInt("SUM(DT_sothungban)"),
+                    resultSet.getInt("sum(DT_sothungtra)"),
+                    resultSet.getInt("SUM(DT_solocban)"),
                     en.format(resultSet.getInt("sum(DT_tongtien)") )));
             tableView.setItems(doanhthuList);
         }
@@ -251,6 +238,7 @@ public class DoanhThuController implements Initializable {
         //tableView.getItems().add( stu.put(1,student));
 
         Scene scene = new Scene(sampleParent);
+        stage.setX(0);
         stage.setScene(scene);
         stage.show();
     }

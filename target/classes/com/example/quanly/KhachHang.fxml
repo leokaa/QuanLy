@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="647.0" prefWidth="1222.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
+<AnchorPane prefHeight="659.0" prefWidth="1326.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
     <children>
         <Pane prefHeight="659.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
@@ -53,20 +53,20 @@
                         <Image url="@image/van-black-side-view.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="41.0" layoutY="43.0" prefHeight="45.0" prefWidth="89.0" styleClass="fontLoGo" text="Như Ý" textFill="#e43a3a">
+            <Label layoutX="46.0" layoutY="-6.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Harlow Solid Italic" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="22.0" layoutY="14.0" prefHeight="45.0" prefWidth="149.0" styleClass="fontLoGo" text="Nước Suối " textFill="#e43a3a">
+            <Label layoutX="18.0" layoutY="44.0" prefHeight="28.0" prefWidth="156.0" styleClass="fontLoGo1" text="Tươi mát và trong lành" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Bauhaus 93" size="15.0" />
                </font>
             </Label>
             </children></Pane>
-        <Pane layoutX="192.0" layoutY="57.0" prefHeight="594.0" prefWidth="1208.0" style="-fx-background-color: E6E6E6;">
+        <Pane layoutX="192.0" layoutY="57.0" prefHeight="594.0" prefWidth="1193.0" style="-fx-background-color: E6E6E6;">
             <children>
-                <TableView fx:id="tableView" layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="1184.0" stylesheets="@../../../MainCSS.css">
+                <TableView fx:id="tableView" layoutX="9.0" layoutY="118.0" prefHeight="466.0" prefWidth="1178.0" stylesheets="@../../../MainCSS.css">
                     <columns>
                         <TableColumn fx:id="sttcol1" prefWidth="50.0" text="STT" />
                         <TableColumn fx:id="tencol" prefWidth="140.0" text="Tên Khách hàng" />
@@ -77,21 +77,21 @@
                         <TableColumn fx:id="tienban" prefWidth="112.79998779296875" text="Tiền bán" />
                         <TableColumn fx:id="notiencol" prefWidth="105.59991455078125" text="Nợ tiền" />
                         <TableColumn fx:id="ghichucol" minWidth="0.0" prefWidth="112.800048828125" text="Ghi chú" />
-                        <TableColumn fx:id="thucthicol" maxWidth="316.800048828125" minWidth="30.0" prefWidth="173.5999755859375" text="Thực thi" />
+                        <TableColumn fx:id="thucthicol" maxWidth="316.800048828125" minWidth="30.0" prefWidth="166.4000244140625" text="Thực thi" />
                     </columns>
                 </TableView>
                 <Button layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onAction="#create" prefHeight="33.0" prefWidth="100.0" styleClass="BtnThem" stylesheets="@../../../MainCSS.css" text="Thêm">
                     <font>
                         <Font name="Century Gothic Bold" size="18.0" />
                     </font></Button>
-                <Label layoutX="482.0" layoutY="14.0" prefHeight="57.0" prefWidth="245.0" text="Danh sách khách hàng">
+                <Label layoutX="503.0" layoutY="14.0" prefHeight="57.0" prefWidth="245.0" text="Danh sách khách hàng">
                     <font>
                         <Font name="Century Gothic Bold" size="21.0" />
                     </font>
                 </Label>
             <Pane fx:id="GiaoDich" layoutX="162.0" layoutY="14.0" prefHeight="418.0" prefWidth="927.0" styleClass="bg_create" stylesheets="@../../../MainCSS.css" visible="false">
                <children>
-                  <Label layoutX="13.0" layoutY="14.0" prefHeight="28.0" prefWidth="220.0" text="Tên: Linh">
+                  <Label fx:id="lablechitiet" layoutX="13.0" layoutY="14.0" prefHeight="28.0" prefWidth="220.0" text="Tên: ">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
@@ -99,13 +99,13 @@
                   <TableView fx:id="tableView1" layoutX="13.0" layoutY="67.0" prefHeight="337.0" prefWidth="905.0">
                     <columns>
                         <TableColumn prefWidth="141.5999755859375" text="STT" visible="false" />
-                        <TableColumn fx:id="ngaygiaodichcol" prefWidth="141.5999755859375" text="Ngày giao dịch" />
-                        <TableColumn fx:id="soloccol" prefWidth="137.5999755859375" text="Số lượng lóc mua" />
-                        <TableColumn fx:id="sothungmuacol" minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng mua" />
-                        <TableColumn fx:id="sothungtracol" minWidth="0.0" prefWidth="155.20001220703125" text="Số lượng thùng trả" />
-                        <TableColumn fx:id="sotientracol" minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền trả" />
-                        <TableColumn fx:id="sotiennocol" minWidth="0.0" prefWidth="111.20013427734375" text="Số tiền nợ" />
-                        <TableColumn fx:id="thucthi" minWidth="0.0" prefWidth="88.0" text="Thực Thi" />
+                        <TableColumn fx:id="ngaygiaodichcol" prefWidth="168.0" text="Ngày giao dịch" />
+                        <TableColumn fx:id="soloccol" prefWidth="123.0" text="Số lóc mua" />
+                        <TableColumn fx:id="sothungmuacol" minWidth="0.0" prefWidth="131.0" text="Số  thùng mua" />
+                        <TableColumn fx:id="sothungtracol" minWidth="0.0" prefWidth="123.0" text="Số thùng trả" />
+                        <TableColumn fx:id="sotientracol" minWidth="0.0" prefWidth="147.0" text="Số tiền trả" />
+                        <TableColumn fx:id="sotiennocol" minWidth="0.0" prefWidth="147.0" text="Số tiền nợ" />
+                        <TableColumn fx:id="thucthi" minWidth="0.0" prefWidth="65.0" text="Thực Thi" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnThoatLishSu" layoutX="795.0" layoutY="11.0" mnemonicParsing="false" onAction="#thoatGiaoDich" text="Thoát" />
@@ -118,7 +118,7 @@
                 <Font name="Century Gothic" size="16.0" />
             </font>
         </TextField>
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1346.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1320.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@image/147144.png" />
             </image>

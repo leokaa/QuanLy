@@ -150,7 +150,7 @@ public class HangNhapController implements Initializable {
             rs = st.executeQuery(query);
 
             while (rs.next()){
-                hangnhap = new HangNhap(rs.getDate("HN_ngay"),rs.getString("HN_ten"),rs.getInt("HN_soluong"),rs.getInt("HN_Dongia"),rs.getInt("ThanhTien"),rs.getString("HN_ghichu"));
+                hangnhap = new HangNhap(rs.getInt("HN_stt"), rs.getDate("HN_ngay"),rs.getString("HN_ten"),rs.getInt("HN_soluong"),rs.getInt("HN_Dongia"),rs.getInt("ThanhTien"),rs.getString("HN_ghichu"));
                 HangNhapList.add(hangnhap);
             }
 
@@ -245,7 +245,7 @@ public class HangNhapController implements Initializable {
 
 //                              Dieu kien de loc ma lh
 
-                                hangnhap = TableViewID.getSelectionModel().getSelectedItem();
+                                hangnhap = getTableView().getItems().get(getIndex());
 //                                System.out.println(hangnhap);
                                 Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setTitle("Cảnh báo");
@@ -258,8 +258,8 @@ public class HangNhapController implements Initializable {
                                 Optional<ButtonType> result = alert.showAndWait();
 
                                 if(result.get().getButtonData()==ButtonBar.ButtonData.YES){
-                                    String query = "DELETE FROM `quanly1`.`quanly_hangnhap` WHERE  `HN_ngay`='"+hangnhap.getNgayNhap()+"' AND `HN_ten`='"+hangnhap.getTen_LH()+"';";
-                                    System.out.println(query);
+                                    String query = "DELETE FROM `quanly1`.`quanly_hangnhap` WHERE  `HN_stt`="+hangnhap.getStt();
+
                                     DatabaseConnection connectionNow = new DatabaseConnection();
                                     Connection connectionDB = connectionNow.getConnect();
                                     preparedStatement = connectionDB.prepareStatement(query);
@@ -275,7 +275,7 @@ public class HangNhapController implements Initializable {
 
                         editButton.setOnMouseClicked((MouseEvent event) -> {
                             Id_edit.setVisible(true);
-                            hangnhap = TableViewID.getSelectionModel().getSelectedItem();
+                            hangnhap = getTableView().getItems().get(getIndex());
                             view(hangnhap);
                            // Edit_sua();
                         });
@@ -328,19 +328,20 @@ public class HangNhapController implements Initializable {
     }
 
     public void Create_them(ActionEvent event) throws Exception{
-
-        System.out.println(create_ngaynhap.getValue());
-
-        ObservableList<String> list = FXCollections.observableArrayList("1", "2");
-        String query = "INSERT INTO `quanly1`.`quanly_hangnhap` (`HN_ngay`, `HN_ten`, `HN_soluong`, `HN_dongia`, `HN_ghichu`) VALUES ('"+create_ngaynhap.getValue()+"','"+create_loaihang.getText()+"','"+create_soluong.getText()+"','"+create_dongia.getText()+"','"+create_ghichu.getText()+"');";
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectionDB = connectionNow.getConnect();
+
+
+
+        String query = "INSERT INTO `quanly1`.`quanly_hangnhap` (`HN_ngay`, `HN_ten`, `HN_soluong`, `HN_dongia`, `HN_ghichu`) VALUES ('"+create_ngaynhap.getValue()+"','"+create_loaihang.getText()+"','"+create_soluong.getText()+"','"+create_dongia.getText()+"','"+create_ghichu.getText()+"');";
+
         Statement st;
         try{
             st = connectionDB.createStatement();
             st.executeUpdate(query);
             Id_create.setVisible(false);
             showTable();
+            Search();
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
@@ -376,6 +377,7 @@ public class HangNhapController implements Initializable {
             st.executeUpdate(query);
             Id_edit.setVisible(false);
             showTable();
+            Search();
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
@@ -414,6 +416,7 @@ public class HangNhapController implements Initializable {
         loader.setLocation(getClass().getResource("KhachHang.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        stage.setX(0);
         stage.setScene(scene);
         stage.show();
     }

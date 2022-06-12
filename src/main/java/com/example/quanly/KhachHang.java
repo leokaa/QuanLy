@@ -1,6 +1,8 @@
 package com.example.quanly;
 
-public class KhachHang {
+import com.itextpdf.text.Document;
+
+public class KhachHang extends Document {
     private  int stt;
     private String tenkh = null;
     private String sdt = null;
@@ -21,6 +23,10 @@ public class KhachHang {
         this.tienban = tienban;
         this.sotienno = sotienno;
         this.ghichu = ghichu;
+    }
+
+    public KhachHang() {
+
     }
 
     public String getTienban() {

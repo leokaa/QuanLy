@@ -1,5 +1,6 @@
 package com.example.quanly;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,6 +69,15 @@ public class MainController implements Initializable{
     @FXML
     private Label dayVao;
 
+    @FXML
+    private JFXButton top1;
+
+    @FXML
+    private JFXButton top2;
+
+    @FXML
+    private JFXButton top3;
+
 
     @FXML
     LineChart<String, Number> idLineChart;
@@ -75,11 +85,15 @@ public class MainController implements Initializable{
     DoanhThuMain doanhthu = null ;
     PreparedStatement preparedStatement = null ;
 
+    public MainController() {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             showLienChart();
             showTop();
+            showTopKH();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -153,11 +167,66 @@ public class MainController implements Initializable{
         idLineChart.getData().add(series);
     }
 
+    public void showTopKH() throws SQLException{
+
+        DatabaseConnection connectionNow = new DatabaseConnection();
+        Connection connectionDB = connectionNow.getConnect();
+
+        String query = "SELECT KH_tenkh, SUM(KH_tienban) AS tien\n" +
+                "FROM quanly_khachhang\n" +
+                "GROUP BY KH_tenkh\n" +
+                "ORDER BY tien DESC \n" +
+                "LIMIT 0,1";
+        Statement st;
+        ResultSet rs;
+
+        String query1 = "SELECT KH_tenkh, SUM(KH_tienban) AS tien\n" +
+                "FROM quanly_khachhang\n" +
+                "GROUP BY KH_tenkh\n" +
+                "ORDER BY tien DESC \n" +
+                "LIMIT 1,1";
+        Statement st1;
+        ResultSet rs1;
+
+        String query2 = "SELECT KH_tenkh, SUM(KH_tienban) AS tien\n" +
+                "FROM quanly_khachhang\n" +
+                "GROUP BY KH_tenkh\n" +
+                "ORDER BY tien DESC \n" +
+                "LIMIT 2,1";
+        Statement st2;
+        ResultSet rs2;
+
+        try{
+            st = connectionDB.createStatement();
+            rs = st.executeQuery(query);
+
+            st1 = connectionDB.createStatement();
+            rs1 = st1.executeQuery(query1);
+
+            st2 = connectionDB.createStatement();
+            rs2 = st2.executeQuery(query2);
+
+            while (rs.next())
+                top1.setText(rs.getString("KH_tenkh"));
+
+            while (rs1.next())
+                top2.setText(rs1.getString("KH_tenkh"));
+
+            while (rs2.next())
+                top3.setText(rs2.getString("KH_tenkh"));
+
+
+        }catch (Exception exception){
+            exception.printStackTrace();
+            exception.getCause();
+        }
+    }
+
     public void showTop() throws SQLException {
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectionDB = connectionNow.getConnect();
 
-        String query = "SELECT DT_ngay, SUM(DT_soluongban) as SLB, sum(DT_soluongtra) as SLT , sum(DT_tongtien) as DoanhThu \n" +
+        String query = "SELECT DT_ngay, SUM(DT_sothungban)+SUM(DT_solocban) as SLB, sum(DT_sothungtra) as SLT , sum(DT_tongtien) as DoanhThu \n" +
                 "FROM `quanly_doanhthu` \n" +
                 "WHERE DT_ngay = CURRENT_DATE \n" +
                 "and 1 GROUP BY DT_ngay\n";
@@ -165,14 +234,14 @@ public class MainController implements Initializable{
         Statement st;
         ResultSet rs;
 
-        String query1 = "SELECT  month(CURRENT_DATE),sum(DT_soluongban) AS SLB, sum(DT_soluongtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
+        String query1 = "SELECT  month(CURRENT_DATE),sum(DT_sothungban)+sum(DT_solocban) AS SLB, sum(DT_sothungtra) AS SLT, sum(DT_tongtien) AS DoanhThu\n" +
                 "FROM quanly_doanhthu\n" +
                 "WHERE month(DT_ngay) = month(CURRENT_DATE)\n" +
                 "and 1 GROUP BY month(CURRENT_DATE)\n";
         Statement st1;
         ResultSet rs1;
 
-        String query2 = "SELECT year(DT_ngay), SUM(DT_soluongban) as SLB, sum(DT_soluongtra) as SLT, sum(DT_tongtien) as DoanhThu \n" +
+        String query2 = "SELECT year(DT_ngay), SUM(DT_sothungban)+sum(DT_solocban) as SLB, sum(DT_sothungtra) as SLT, sum(DT_tongtien) as DoanhThu \n" +
                 "FROM `quanly_doanhthu` \n" +
                 "WHERE 1 GROUP BY year(DT_ngay)";
         Statement st2;
@@ -255,6 +324,7 @@ public class MainController implements Initializable{
         loader.setLocation(getClass().getResource("KhachHang.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        stage.setX(0);
         stage.setScene(scene);
         stage.show();
     }

@@ -54,14 +54,14 @@
                         <Image url="@image/van-black-side-view.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="41.0" layoutY="43.0" prefHeight="45.0" prefWidth="89.0" styleClass="fontLoGo" text="Như Ý" textFill="#e43a3a">
+            <Label layoutX="46.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Harlow Solid Italic" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="22.0" layoutY="14.0" prefHeight="45.0" prefWidth="149.0" styleClass="fontLoGo" text="Nước Suối " textFill="#e43a3a">
+            <Label layoutX="19.0" layoutY="53.0" prefHeight="28.0" prefWidth="156.0" styleClass="fontLoGo1" text="Tươi mát và trong lành" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Bauhaus 93" size="15.0" />
                </font>
             </Label>
             </children></Pane>
@@ -94,9 +94,9 @@
                 <TableView fx:id="tableView" layoutX="36.0" layoutY="118.0" prefHeight="466.0" prefWidth="725.0" stylesheets="@../../../MainCSS.css">
                     <columns>
                         <TableColumn fx:id="ngaycol" prefWidth="137.6000518798828" text="Năm" />
-                        <TableColumn fx:id="malhcol" prefWidth="140.79998779296875" text="Loại hàng" />
-                        <TableColumn fx:id="soluongbancol" prefWidth="135.20001220703125" text="Số lượng bán ra" />
-                        <TableColumn fx:id="soluongtracol" prefWidth="144.0" text="Số lượng thu vào" />
+                        <TableColumn fx:id="malhcol" prefWidth="140.79998779296875" text="Số Lóc bán" />
+                        <TableColumn fx:id="soluongbancol" prefWidth="135.20001220703125" text="Số Thùng Bán ra" />
+                        <TableColumn fx:id="soluongtracol" prefWidth="144.0" text="Số Thùng Thu vào" />
                         <TableColumn fx:id="tongdoanhthucol" prefWidth="165.5999755859375" text="Tổng doanh thu" />
                     </columns>
                 </TableView>

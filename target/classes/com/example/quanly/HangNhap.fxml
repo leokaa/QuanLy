@@ -54,14 +54,14 @@
                         <Image url="@image/van-black-side-view.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="41.0" layoutY="43.0" prefHeight="45.0" prefWidth="89.0" styleClass="fontLoGo" text="Như Ý" textFill="#e43a3a">
+            <Label layoutX="46.0" layoutY="-6.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Harlow Solid Italic" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="22.0" layoutY="14.0" prefHeight="45.0" prefWidth="149.0" styleClass="fontLoGo" text="Nước Suối " textFill="#e43a3a">
+            <Label layoutX="18.0" layoutY="44.0" prefHeight="28.0" prefWidth="156.0" styleClass="fontLoGo1" text="Tươi mát và trong lành" textFill="WHITE">
                <font>
-                  <Font name="Stencil" size="29.0" />
+                  <Font name="Bauhaus 93" size="15.0" />
                </font>
             </Label>
             </children></Pane>

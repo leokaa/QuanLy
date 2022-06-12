@@ -28,5 +28,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.jruby:jruby-complete:9.2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.10.2" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.3" level="project" />
+    <orderEntry type="library" name="Maven: e-iceblue:spire.pdf.free:4.3.0" level="project" />
   </component>
 </module>

@@ -63,18 +63,18 @@
                   <Reflection fraction="0.0" topOpacity="0.0" />
                </effect>
             </ImageView>
-            <Label layoutX="79.0" layoutY="35.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
+            <Label layoutX="46.0" prefHeight="50.0" prefWidth="99.0" styleClass="fontLoGo" text="Như Ý" textFill="WHITE">
                <font>
                   <Font name="Harlow Solid Italic" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="70.0" layoutY="77.0" prefHeight="28.0" prefWidth="118.0" styleClass="fontLoGo1" text="Bạn của mọi nhà" textFill="WHITE">
+            <Label layoutX="18.0" layoutY="50.0" prefHeight="28.0" prefWidth="156.0" styleClass="fontLoGo1" text="Tươi mát và trong lành" textFill="WHITE">
                <font>
                   <Font name="Bauhaus 93" size="15.0" />
                </font>
             </Label>
          </children></Pane>
-      <Pane layoutX="192.0" layoutY="46.0" prefHeight="603.0" prefWidth="775.0" style="-fx-background-color: E6E6E6;">
+      <Pane layoutX="192.0" layoutY="57.0" prefHeight="592.0" prefWidth="775.0" style="-fx-background-color: E6E6E6;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="459.0" text="Welcome to the Nhu Y store !" textAlignment="CENTER">
                <font>
@@ -83,7 +83,7 @@
             </Label>
             <Pane layoutX="16.0" layoutY="289.0" prefHeight="287.0" prefWidth="740.0" styleClass="Rank" stylesheets="@../../../MainCSS.css">
                <children>
-                  <JFXButton layoutX="14.0" layoutY="58.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn A">
+                  <JFXButton fx:id="top1" layoutX="14.0" layoutY="58.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn A">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font></JFXButton>
@@ -92,12 +92,12 @@
                         <Font name="Century Gothic Bold" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="14.0" layoutY="116.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn B">
+                  <JFXButton fx:id="top2" layoutX="14.0" layoutY="116.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn B">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="14.0" layoutY="180.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn C">
+                  <JFXButton fx:id="top3" layoutX="14.0" layoutY="180.0" prefHeight="40.0" prefWidth="192.0" styleClass="DetialRank" stylesheets="@../../../MainCSS.css" text="               Nguyễn Văn C">
                      <font>
                         <Font name="Century Gothic Bold" size="15.0" />
                      </font>
@@ -256,7 +256,7 @@
             </Label>
          </children>
       </Pane>
-      <TextField layoutX="206.0" layoutY="8.0" prefHeight="38.0" prefWidth="235.0" promptText="    Tìm kiếm" styleClass="BgSearch" stylesheets="@../../../MainCSS.css">
+      <TextField layoutX="205.0" layoutY="8.0" prefHeight="38.0" prefWidth="235.0" promptText="    Tìm kiếm" styleClass="BgSearch" stylesheets="@../../../MainCSS.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>

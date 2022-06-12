@@ -4,14 +4,14 @@ public class DoanhThu {
     private String ngay = null;
     private int soluongban = 0;
     private int soluongtra = 0;
-    private String maLH = null;
+    private int solocban = 0;
     private  String tongdoanhthu = null;
 
-    public DoanhThu(String ngay, int soluongban, int soluongtra, String maLH,String tongdoanhthu) {
+    public DoanhThu(String ngay, int soluongban, int soluongtra, int solocban,String tongdoanhthu) {
         this.ngay = ngay;
         this.soluongban = soluongban;
         this.soluongtra = soluongtra;
-        this.maLH = maLH;
+        this.solocban = solocban;
         this.tongdoanhthu=tongdoanhthu;
     }
 
@@ -39,12 +39,12 @@ public class DoanhThu {
         this.soluongtra = soluongtra;
     }
 
-    public String getMaLH() {
-        return maLH;
+    public int getMaLH() {
+        return solocban;
     }
 
-    public void setMaLH(String maLH) {
-        this.maLH = maLH;
+    public void setMaLH(int solocban) {
+        this.solocban = solocban;
     }
 
     public String getTongdoanhthu() {

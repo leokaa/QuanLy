@@ -1,5 +1,9 @@
 package com.example.quanly;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -22,11 +26,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -35,8 +38,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 public class KhachHangController  implements Initializable {
     KhachHang khachHang = null ;
     ChiTietKhachHang chiTietKhachHang = null;
@@ -44,6 +45,8 @@ public class KhachHangController  implements Initializable {
     private Button idlabel;
     @FXML
     private TableView<KhachHang> tableView;
+
+
     @FXML
     private TableColumn<KhachHang,String> tencol;
 
@@ -140,6 +143,8 @@ public class KhachHangController  implements Initializable {
 
     @FXML
     private TableView<ChiTietKhachHang> tableView1;
+
+
     @FXML
     private TableColumn<ChiTietKhachHang,String> ngaygiaodichcol;
     @FXML
@@ -167,6 +172,9 @@ public class KhachHangController  implements Initializable {
     private TextField chitietsotientra;
     @FXML
     private TextField chitietsotienno;
+
+    @FXML
+    private Label lablechitiet;
 
     private  boolean update;
     Connection connection = null;
@@ -246,7 +254,8 @@ public class KhachHangController  implements Initializable {
 
         try {
             showTable();
-        } catch (SQLException e) {
+            Btnprint();
+        } catch (SQLException | DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
         try {
@@ -290,10 +299,10 @@ public class KhachHangController  implements Initializable {
             Locale localeEN = new Locale("en", "EN");
             NumberFormat en = NumberFormat.getInstance(localeEN);
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
             while (resultSet.next()){
-                String formattedDate = formatter.format(resultSet.getDate("CTKH_ngay"));
+                String formattedDate = formatter.format(resultSet.getTimestamp("CTKH_ngay"));
                 chiTietKhachHang = new ChiTietKhachHang(resultSet.getInt("KH_stt"),resultSet.getInt("CTKH_stt"),formattedDate,resultSet.getInt("CTKH_soloc"),resultSet.getInt("CTKH_sothungmua"),resultSet.getInt("CTKH_sothungtra"),en.format(resultSet.getInt("CTKH_sotientra")),en.format(resultSet.getInt("CTKH_sotienno")));
                 list.add(chiTietKhachHang);
             }
@@ -313,57 +322,71 @@ public class KhachHangController  implements Initializable {
         sotientracol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sotientra"));
         sotiennocol.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sotienno"));
 
-//        Callback<TableColumn<ChiTietKhachHang,String>, TableCell<ChiTietKhachHang,String>> cellFoctory = (TableColumn<ChiTietKhachHang,String> param )-> {
-//            final TableCell<ChiTietKhachHang, String> cell = new TableCell<ChiTietKhachHang, String>() {
-//                @Override
-//                public void updateItem(String item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//
-//                    } else {
-//                        Button delButton = new Button("Xóa");
-//                        delButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
-//
-////                        Button suaButton = new Button("Xó");
-////                        suaButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
-//
-//                        HBox manageButton = new HBox(delButton);
-//                        manageButton.setStyle("-fx-alignment:center");
-//                        setGraphic(manageButton);
-//
-//                        delButton.setOnMouseClicked((MouseEvent event) -> {
-//                            try {
-//
-////                              Dieu kien de loc ma lh
-//
-//                                chiTietKhachHang = getTableView().getItems().get(getIndex());
-////                                System.out.println(hangnhap);
-//                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                                alert.setTitle("Cảnh báo");
-//                                //alert.setHeaderText("Bạn có chắc muốn xóa loại hành: "+hangnhap.getTen_LH()+" ?");
-//                                alert.setHeaderText("Bạn có chắc muốn xóa không!");
-//                                ButtonType btT1 = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-//                                ButtonType btT2 = new ButtonType("No", ButtonBar.ButtonData.NO);
-//
-//                                alert.getButtonTypes().setAll(btT1, btT2);
-//                                Optional<ButtonType> result = alert.showAndWait();
-//
-//                                if (result.get().getButtonData() == ButtonBar.ButtonData.YES) {
-//                                    String query = "DELETE FROM `quanly_chitietkhachhang` WHERE CTKH_stt = " + chiTietKhachHang.getSttkh();
-//                                    System.out.println(query);
-//                                    DatabaseConnection connectionNow = new DatabaseConnection();
-//                                    Connection connectionDB = connectionNow.getConnect();
-//                                    preparedStatement = connectionDB.prepareStatement(query);
-//                                    preparedStatement.execute();
-//                                    String query1 ="UPDATE `quanly_doanhthu` SET `DT_soluongban`=`DT_soluongban`-"+chiTietKhachHang.+"'[value-2]',`DT_soluongtra`='[value-3]',`LH_malh`='[value-4]',`DT_tongtien`='[value-5]' WHERE 1";
-//                                    showTable();
-//                                }
-//
-//                            } catch (SQLException ex) {
-//                                Logger.getLogger(HangNhapController.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-//                        });
+        Callback<TableColumn<ChiTietKhachHang,String>, TableCell<ChiTietKhachHang,String>> cellFoctory = (TableColumn<ChiTietKhachHang,String> param )-> {
+            final TableCell<ChiTietKhachHang, String> cell = new TableCell<ChiTietKhachHang, String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+
+                    } else {
+                        Button delButton = new Button("Xóa");
+                        delButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+
+//                        Button suaButton = new Button("Xó");
+//                        suaButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+
+                        HBox manageButton = new HBox(delButton);
+                        manageButton.setStyle("-fx-alignment:center");
+                        setGraphic(manageButton);
+
+                        delButton.setOnMouseClicked((MouseEvent event) -> {
+                            try {
+
+                                chiTietKhachHang = getTableView().getItems().get(getIndex());
+//                                System.out.println(hangnhap);
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Cảnh báo");
+                                //alert.setHeaderText("Bạn có chắc muốn xóa loại hành: "+hangnhap.getTen_LH()+" ?");
+                                alert.setHeaderText("Bạn có chắc muốn xóa không!");
+                                ButtonType btT1 = new ButtonType("Có", ButtonBar.ButtonData.YES);
+                                ButtonType btT2 = new ButtonType("Không", ButtonBar.ButtonData.NO);
+
+                                alert.getButtonTypes().setAll(btT1, btT2);
+                                Optional<ButtonType> result = alert.showAndWait();
+
+                                if (result.get().getButtonData() == ButtonBar.ButtonData.YES) {
+                                    DatabaseConnection connectionNow = new DatabaseConnection();
+                                    Connection connectionDB = connectionNow.getConnect();
+                                    String query = "SELECT * FROM `quanly_chitietkhachhang` WHERE CTKH_stt= "+chiTietKhachHang.getSttctkh();
+                                    preparedStatement = connectionDB.prepareStatement(query);
+                                    resultSet = preparedStatement.executeQuery();
+                                    resultSet.next();
+                                    int tientra = resultSet.getInt("CTKH_sotientra");
+                                    int tienno = resultSet.getInt("CTKH_sotienno");
+                                    int thungno= chiTietKhachHang.getSothungmua() - chiTietKhachHang.getSothungtra();
+
+                                    String date = String.valueOf(resultSet.getDate("CTKH_ngay"));
+                                    System.out.println(date);
+                                    String query1 ="UPDATE `quanly_doanhthu` SET `DT_sothungban`=`DT_sothungban`-"+chiTietKhachHang.getSothungmua()+",`DT_sothungtra`=`DT_sothungtra`-"+chiTietKhachHang.getSothungtra()+",`DT_solocban`=`DT_solocban`-"+chiTietKhachHang.getSoloc()+",`DT_tongtien`=`DT_tongtien`-"+(tientra+tienno)+" WHERE `DT_ngay`='"+date+"'";
+                                    preparedStatement = connectionDB.prepareStatement(query1);
+                                    preparedStatement.execute();
+                                    String query2 = "UPDATE `quanly_khachhang` SET `KH_sothungno`=`KH_sothungno` - "+thungno+",`KH_tienban`=`KH_tienban`-"+tientra+",`KH_sotienno`=`KH_sotienno`-"+tienno+" WHERE KH_stt="+chiTietKhachHang.getSttkh();
+                                    preparedStatement = connectionDB.prepareStatement(query2);
+                                    preparedStatement.execute();
+
+                                    query = "DELETE FROM `quanly_chitietkhachhang` WHERE CTKH_stt = " + chiTietKhachHang.getSttctkh();
+                                    preparedStatement = connectionDB.prepareStatement(query);
+                                    preparedStatement.execute();
+                                    showTable();
+                                    showTableDG(stt);
+                                }
+
+                            } catch (SQLException ex) {
+                                Logger.getLogger(HangNhapController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        });
 ////                        suaButton.setOnMouseClicked((MouseEvent event) -> {
 ////
 ////                            chiTietKhachHang = getTableView().getItems().get(getIndex());
@@ -383,13 +406,13 @@ public class KhachHangController  implements Initializable {
 ////                            chitietsothungtra.setText(String.valueOf(chiTietKhachHang.getSothungtra()));
 ////                        });
 //
-//                    }
-//                    setText(null);
-//                }
-//            };
-//                return cell;
-//        };
-//        thucthi.setCellFactory(cellFoctory);
+                   }
+                    setText(null);
+                }
+            };
+                return cell;
+        };
+        thucthi.setCellFactory(cellFoctory);
         tableView1.setItems(list);
     }
     public void showTable() throws SQLException {
@@ -403,7 +426,7 @@ public class KhachHangController  implements Initializable {
                 if (row != null) {
                     int rowIndex = row.getIndex();
                     if (rowIndex < row.getTableView().getItems().size()) {
-                        return Integer.toString(rowIndex);
+                        return Integer.toString(rowIndex+1);
                     }
                 }
                 return null;
@@ -435,17 +458,17 @@ public class KhachHangController  implements Initializable {
                     else {
                         //TableCell<SinhVien, String> cell = new TableCell<>();
 
-                        Button editButton = new Button("Sử");
+                        Button editButton = new Button("Sửa");
                         editButton.setStyle("-fx-background-color: #f58181; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        Button deleteButton = new Button("Xó");
+                        Button deleteButton = new Button("Xóa");
                         deleteButton.setStyle("-fx-background-color: #f5c285; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        Button giaodichButton = new Button("Gi");
-                        giaodichButton.setStyle("-fx-background-color: #6EBF8B; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+                        Button giaodichButton = new Button(" G.D ");
+                        giaodichButton.setStyle("-fx-background-color: #6EBF8B;-fx-alignment: center ;-fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
-                        Button lichsuButton = new Button("Ls");
-                        lichsuButton.setStyle("-fx-background-color: #74e0d0; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
+                        Button lichsuButton = new Button("  L.S  ");
+                        lichsuButton.setStyle("-fx-background-color: #74e0d0;-fx-alignment: center ; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 0, 0, 2); -fx-background-radius: 3px;-fx-padding: 5 5 5 5;-fx-border-insets: 2px;-fx-background-insets: 2px;");
 
 
 
@@ -537,6 +560,7 @@ public class KhachHangController  implements Initializable {
                             } catch (SQLException e) {
                                 e.printStackTrace();
                             }
+                            lablechitiet.setText("Tên: "+khachHang.getTenkh());
                         });
 
 
@@ -600,7 +624,16 @@ public class KhachHangController  implements Initializable {
             preparedStatement.execute();
         }
         else{
-
+            query  = "SELECT * FROM `quanly_khachhang` where `KH_tenkh`= '"+tenkh+"'";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                Alert alert= new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Cảnh báo");
+                alert.setHeaderText("Tên khách hàng đã tồn tại!");
+                alert.showAndWait();
+                return;
+            }
             query = "INSERT INTO `quanly_khachhang`(`KH_tenkh`, `KH_sdt`, `KH_diachi`, `KH_ghichu`) VALUES ('" + tenkh + "','" + sdt + "','" + diachi + "','" + ghichu + "')";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.execute();
@@ -673,45 +706,45 @@ public class KhachHangController  implements Initializable {
             thungno=sothung + sothungno;
         }
         int tienno = sothung * dongiathung + soloc*dongialoc - sotien+noton;
-
+        int tiennoct = sothung * dongiathung + soloc*dongialoc - sotien;
         query = "UPDATE `quanly_khachhang` SET `KH_sothungno`=" + thungno + ",`KH_sotienno`=" + tienno + ",`KH_ghichu`='" + ghichu1 + "',`KH_tienban`=`KH_tienban`+"+ sotien +" WHERE KH_stt =" + sttgiaodich;
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.execute();
 
-        query = "INSERT INTO `quanly_chitietkhachhang`(`CTKH_ngay`, `CTKH_soloc`, `CTKH_sothungmua`, `CTKH_sothungtra`, `CTKH_sotientra`, `CTKH_sotienno`, `KH_stt`) VALUES(CURRENT_DATE ,"+soloc+","+sothung+","+sothungtra1+","+sotien+","+tienno+","+sttgiaodich+") ;";
+        query = "INSERT INTO `quanly_chitietkhachhang`(`CTKH_ngay`, `CTKH_soloc`, `CTKH_sothungmua`, `CTKH_sothungtra`, `CTKH_sotientra`, `CTKH_sotienno`, `KH_stt`) VALUES(NOW() ,"+soloc+","+sothung+","+sothungtra1+","+sotien+","+tiennoct+","+sttgiaodich+") ;";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.execute();
 
         if(soloc != 0) {
-            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE AND LH_malh ='chai'";
+            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE ";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 //resultSet.next();
-                int soluongton = resultSet.getInt("DT_soluongban") + soloc;
-                query = "UPDATE `quanly_doanhthu` SET `DT_soluongban`=" + soluongton +", `DT_tongtien`= `DT_tongtien`+"+soloc*dongialoc +" WHERE DT_ngay = CURRENT_DATE AND `LH_malh`= 'chai'";
+                int soluongton = resultSet.getInt("DT_solocban") + soloc;
+                query = "UPDATE `quanly_doanhthu` SET `DT_solocban`=" + soluongton +", `DT_tongtien`= `DT_tongtien`+"+soloc*dongialoc +" WHERE DT_ngay = CURRENT_DATE";
             } else {
-                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_soluongban`,`DT_soluongtra`, `LH_malh`,`DT_tongtien`) VALUES (CURRENT_DATE ," + soloc + ",0,'chai',"+soloc*dongialoc+")" ;
+                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_sothungban`,`DT_sothungtra`,`DT_solocban`,`DT_tongtien`) VALUES (CURRENT_DATE , 0,0,"+soloc+","+soloc*dongialoc+")" ;
             }
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.execute();
         }
         if(sothung != 0) {
-            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE AND LH_malh ='thung'";
+            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE ";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 //resultSet.next();
-                int soluongton = resultSet.getInt("DT_soluongban") + sothung;
-                query = "UPDATE `quanly_doanhthu` SET `DT_soluongban`=" + soluongton +",`DT_tongtien`=`DT_tongtien`+"+sothung*dongiathung +" WHERE DT_ngay = CURRENT_DATE AND `LH_malh`= 'thung'";
+                int soluongton = resultSet.getInt("DT_sothungban") + sothung;
+                query = "UPDATE `quanly_doanhthu` SET `DT_sothungban`=" + soluongton +",`DT_tongtien`=`DT_tongtien`+"+sothung*dongiathung +" WHERE DT_ngay = CURRENT_DATE ";
             } else {
-                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_soluongban`,`DT_soluongtra`, `LH_malh`,`DT_tongtien`) VALUES (CURRENT_DATE ," + sothung + ",0,'thung',"+sothung*dongiathung+") ";
+                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_sothungban`,`DT_sothungtra`, `DT_solocban`,`DT_tongtien`) VALUES (CURRENT_DATE ," + sothung + ",0,"+soloc+","+sothung*dongiathung+") ";
             }
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.execute();
         }
         if(sothungtra1 != 0 ){
-            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE AND LH_malh ='thung'";
+            query = "SELECT * FROM `quanly_doanhthu` WHERE DT_ngay =CURRENT_DATE";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -720,9 +753,9 @@ public class KhachHangController  implements Initializable {
             preparedStatement.execute();
 
             if (resultSet.next()) {
-                query = "UPDATE `quanly_doanhthu` SET `DT_soluongtra`=`DT_soluongtra`+" + sothungtra1 + " WHERE DT_ngay = CURRENT_DATE AND `LH_malh`= 'thung'";
+                query = "UPDATE `quanly_doanhthu` SET `DT_sothungtra`=`DT_sothungtra`+" + sothungtra1 + " WHERE DT_ngay = CURRENT_DATE ";
             } else {
-                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_soluongban`,`DT_soluongtra`, `LH_malh`) VALUES (CURRENT_DATE ,0,"+sothungtra1+",'thung') ";
+                query = "INSERT INTO `quanly_doanhthu`(`DT_ngay`, `DT_sothungban`,`DT_sothungtra`, `DT_solocban`) VALUES (CURRENT_DATE ,0,"+sothungtra1+",0) ";
             }
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.execute();
@@ -790,7 +823,77 @@ public class KhachHangController  implements Initializable {
 //        showTable();
 //    }
 
-    public void thoatGiaoDich(ActionEvent event){
+    public void Btnprint() throws SQLException, DocumentException, FileNotFoundException {
+        connection = DatabaseConnection.getConnect();
+        Statement stmt = connection.createStatement();
+        ResultSet query_set = stmt.executeQuery("SELECT * FROM `quanly_khachhang` WHERE 1");
+        Document my_pdf_report = new Document();
+        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("D:/test.pdf"));
+        my_pdf_report.open();
+
+        Font bold = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        Paragraph paragraph = new Paragraph("Lich su giao dich",bold);
+        paragraph.setAlignment(Element.ALIGN_CENTER);
+        paragraph.setSpacingAfter(15);
+
+        PdfPTable my_report_table = new PdfPTable(6);
+        PdfPCell table_cell;
+
+        table_cell=new PdfPCell(new Phrase("Ngay giao dich"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+
+        table_cell=new PdfPCell(new Phrase("So loc mua"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+
+        table_cell=new PdfPCell(new Phrase("So thung mua"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+
+        table_cell=new PdfPCell(new Phrase("So thung tra"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+
+        table_cell=new PdfPCell(new Phrase("So tien tra"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+
+        table_cell=new PdfPCell(new Phrase("So tien no"));
+        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        my_report_table.addCell(table_cell);
+        my_report_table.setHeaderRows(1);
+
+        while (query_set.next()) {
+
+            String dept_id = query_set.getString("KH_stt");
+            String dept_name=query_set.getString("KH_tenkh");
+            String manager_id=query_set.getString("KH_sdt");
+            String location_id=query_set.getString("KH_diachi");
+            String location_id1=query_set.getString("KH_sothungno");
+            String location_id2=query_set.getString("KH_sothungmuon");
+
+            my_report_table.addCell(dept_id);
+            my_report_table.addCell(dept_name);
+            my_report_table.addCell(manager_id);
+            my_report_table.addCell(location_id);
+            my_report_table.addCell(location_id1);
+            my_report_table.addCell(location_id2);
+
+        }
+        my_pdf_report.add(paragraph);
+        my_pdf_report.add(my_report_table);
+        my_pdf_report.close();
+
+        query_set.close();
+        stmt.close();
+        connection.close();
+    }
+
+
+
+
+        public void thoatGiaoDich(ActionEvent event){
         GiaoDich.setVisible(false);
     }
 
