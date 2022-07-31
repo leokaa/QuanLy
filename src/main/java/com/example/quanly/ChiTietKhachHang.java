@@ -21,6 +21,13 @@ public class ChiTietKhachHang {
         this.sotienno = sotienno;
     }
 
+    public ChiTietKhachHang(String sotientra,int soloc, int sothungmua  ,String ngay ){
+        this.sotientra = sotientra;
+        this.soloc = soloc;
+        this.sothungmua = sothungmua;
+        this.ngay = ngay;
+    }
+
     public int getSttkh() {
         return sttkh;
     }

@@ -10,12 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -78,12 +74,25 @@ public class MainController implements Initializable{
     @FXML
     private JFXButton top3;
 
+    @FXML
+    private TableView<ChiTietKhachHang> tableKh;
 
     @FXML
-    LineChart<String, Number> idLineChart;
+    private TableColumn<ChiTietKhachHang, String> idKH;
+
+    @FXML
+    private TableColumn<ChiTietKhachHang, Integer> idLoc;
+
+    @FXML
+    private TableColumn<ChiTietKhachHang, String> idNgay;
+
+    @FXML
+    private TableColumn<ChiTietKhachHang, Integer> idThung;
 
     DoanhThuMain doanhthu = null ;
     PreparedStatement preparedStatement = null ;
+
+    ChiTietKhachHang ctkh = null;
 
     public MainController() {
     }
@@ -91,7 +100,7 @@ public class MainController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            showLienChart();
+            showNgay();
             showTop();
             showTopKH();
         } catch (SQLException e) {
@@ -101,7 +110,40 @@ public class MainController implements Initializable{
     }
 
 
+    public ObservableList<ChiTietKhachHang> getCTKH() throws SQLException {
+        ObservableList<ChiTietKhachHang> CTKHList = FXCollections.observableArrayList();
+        DatabaseConnection connectionNow = new DatabaseConnection();
+        Connection connectionDB = connectionNow.getConnect();
 
+        String query = "SELECT KH_tenkh,CTKH_soloc, CTKH_sothungmua,DATEDIFF(CURRENT_DATE() , max(quanly_chitietkhachhang.CTKH_ngay)) AS SNGD\n" +
+                "FROM quanly_khachhang,quanly_chitietkhachhang\n" +
+                "where quanly_khachhang.KH_stt = quanly_chitietkhachhang.KH_stt\n" +
+                "GROUP BY KH_tenkh\n" +
+                "HAVING DATEDIFF(CURRENT_DATE() , max(quanly_chitietkhachhang.CTKH_ngay)) > 30";
+
+        Statement st;
+        ResultSet rs;
+
+        try{
+            st = connectionDB.createStatement();
+            rs = st.executeQuery(query);
+
+            while (rs.next()){
+                ctkh = new ChiTietKhachHang(rs.getString("KH_tenkh"),rs.getInt("CTKH_soloc"),rs.getInt("CTKH_sothungmua"),rs.getString("SNGD"));
+                CTKHList.add(ctkh);
+            }
+
+        }catch (Exception exception){
+            exception.printStackTrace();
+            exception.getCause();
+        }
+
+        return CTKHList;
+    }
+
+
+
+    // Bang so ngay chua giao dich
     public ObservableList<DoanhThuMain> getDoanhThu() throws SQLException {
         ObservableList<DoanhThuMain> DoanhThuList = FXCollections.observableArrayList();
         DatabaseConnection connectionNow = new DatabaseConnection();
@@ -128,44 +170,18 @@ public class MainController implements Initializable{
         return DoanhThuList;
     }
 
+    public void showNgay() throws SQLException {
+        ObservableList<ChiTietKhachHang> chitietKHList = getCTKH();
+        idKH.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("sotientra"));
+        idLoc.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,Integer>("soloc"));
+        idThung.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,Integer>("sothungmua"));
+        idNgay.setCellValueFactory(new PropertyValueFactory<ChiTietKhachHang,String>("ngay"));
 
-    public void showLienChart() throws SQLException {
+        tableKh.setItems(chitietKHList);
 
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Number of Month");
 
-        final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
-
-        lineChart.setTitle("Stock Monitoring, 2010");
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Doanh thu tháng");
-        DatabaseConnection connectionNow = new DatabaseConnection();
-        Connection connectionDB = connectionNow.getConnect();
-        String query = "\n" +
-                "SELECT month(DT_ngay), sum(DT_tongtien) \n" +
-                "FROM `quanly_doanhthu` \n" +
-                "WHERE 1 GROUP BY month(DT_ngay)" +
-                "\n";
-        Statement st;
-        ResultSet rs;
-
-        try{
-            st = connectionDB.createStatement();
-            rs = st.executeQuery(query);
-
-            while (rs.next()){
-                series.getData().add(new XYChart.Data(rs.getString(1), Integer.parseInt(rs.getString(2))));//Add data to Chart. Changed the second input to Integer due to LineChart<Number,Number>. This should work, though I haven't tested it.
-
-            }
-
-        }catch (Exception exception){
-            exception.printStackTrace();
-            exception.getCause();
-        }
-        idLineChart.getData().add(series);
     }
+
 
     public void showTopKH() throws SQLException{
 

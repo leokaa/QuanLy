@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="659.0" prefWidth="1326.0" style="-fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
+<AnchorPane prefHeight="659.0" prefWidth="1326.0" style="-fx-background-radius: 0px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quanly.KhachHangController">
     <children>
         <Pane prefHeight="659.0" prefWidth="192.0" styleClass="BgLeft" stylesheets="@../../../MainCSS.css">
             <children>
@@ -108,7 +108,15 @@
                         <TableColumn fx:id="thucthi" minWidth="0.0" prefWidth="65.0" text="Thực Thi" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btnThoatLishSu" layoutX="795.0" layoutY="11.0" mnemonicParsing="false" onAction="#thoatGiaoDich" text="Thoát" />
+                  <Button fx:id="btnThoatLishSu" layoutX="855.0" layoutY="16.0" mnemonicParsing="false" onAction="#thoatGiaoDich" style="-fx-background-color: #FE7E6D;" text="Thoát">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Button fx:id="Btnprint" layoutX="772.0" layoutY="16.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" style="-fx-background-color: #377D71;" stylesheets="@../../../MainCSS.css" text="In">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             </children>

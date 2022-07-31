@@ -254,8 +254,7 @@ public class KhachHangController  implements Initializable {
 
         try {
             showTable();
-            Btnprint();
-        } catch (SQLException | DocumentException | FileNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
@@ -444,8 +443,6 @@ public class KhachHangController  implements Initializable {
         muonthung.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("sothungmuon"));
         tienban.setCellValueFactory(new PropertyValueFactory<KhachHang,String>("tienban"));
 
-
-
         Callback<TableColumn<KhachHang,String>, TableCell<KhachHang,String>> cellFoctory = (TableColumn<KhachHang,String> param )-> {
             final TableCell<KhachHang,String> cell = new TableCell<KhachHang,String>() {
                 @Override
@@ -557,14 +554,16 @@ public class KhachHangController  implements Initializable {
                             GiaoDich.setVisible(true);
                             try {
                                 showTableDG(khachHang.getStt());
+                                Btnprint(khachHang.getStt());
                             } catch (SQLException e) {
+                                e.printStackTrace();
+                            } catch (DocumentException e) {
+                                e.printStackTrace();
+                            } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
                             lablechitiet.setText("Tên: "+khachHang.getTenkh());
                         });
-
-
-
                     }
                     setText(null);
                 }
@@ -823,21 +822,24 @@ public class KhachHangController  implements Initializable {
 //        showTable();
 //    }
 
-    public void Btnprint() throws SQLException, DocumentException, FileNotFoundException {
+    public void Btnprint(int id) throws SQLException, DocumentException, FileNotFoundException {
+
+        System.out.println(id);
         connection = DatabaseConnection.getConnect();
         Statement stmt = connection.createStatement();
-        ResultSet query_set = stmt.executeQuery("SELECT * FROM `quanly_khachhang` WHERE 1");
+        ResultSet query_set = stmt.executeQuery("SELECT * FROM quanly_chitietkhachhang WHERE quanly_chitietkhachhang.KH_stt ="+id);
         Document my_pdf_report = new Document();
-        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("D:/test.pdf"));
+        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("D:/ListSuGiaoDich.pdf"));
         my_pdf_report.open();
-
+//        int i =0;
+//        i++;
         Font bold = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
         Paragraph paragraph = new Paragraph("Lich su giao dich",bold);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         paragraph.setSpacingAfter(15);
 
         PdfPTable my_report_table = new PdfPTable(6);
-        PdfPCell table_cell;
+        PdfPCell table_cell = new PdfPCell();
 
         table_cell=new PdfPCell(new Phrase("Ngay giao dich"));
         table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -860,25 +862,31 @@ public class KhachHangController  implements Initializable {
         my_report_table.addCell(table_cell);
 
         table_cell=new PdfPCell(new Phrase("So tien no"));
-        table_cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table_cell.setHorizontalAlignment(Element.ALIGN_JUSTIFIED_ALL);
         my_report_table.addCell(table_cell);
         my_report_table.setHeaderRows(1);
+//        Locale localeEN = new Locale("en", "EN");
+//        NumberFormat en = NumberFormat.getInstance(localeEN);
+         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
 
         while (query_set.next()) {
-
-            String dept_id = query_set.getString("KH_stt");
-            String dept_name=query_set.getString("KH_tenkh");
-            String manager_id=query_set.getString("KH_sdt");
-            String location_id=query_set.getString("KH_diachi");
-            String location_id1=query_set.getString("KH_sothungno");
-            String location_id2=query_set.getString("KH_sothungmuon");
+            String dept_id = query_set.getString("CTKH_ngay");
+            String dept_name=query_set.getString("CTKH_soloc");
+            String manager_id=query_set.getString("CTKH_sothungmua");
+            String location_id=query_set.getString("CTKH_sothungtra");
+            //ep kieu
+            String location_id1=query_set.getString("CTKH_sotientra");
+            String val = nf.format(Integer.parseInt(location_id1));
+            //ep kieu
+            String location_id2=query_set.getString("CTKH_sotienno");
+            String val1 = nf.format(Integer.parseInt(location_id2));
 
             my_report_table.addCell(dept_id);
             my_report_table.addCell(dept_name);
             my_report_table.addCell(manager_id);
             my_report_table.addCell(location_id);
-            my_report_table.addCell(location_id1);
-            my_report_table.addCell(location_id2);
+            my_report_table.addCell(val);
+            my_report_table.addCell(val1);
 
         }
         my_pdf_report.add(paragraph);
@@ -888,10 +896,17 @@ public class KhachHangController  implements Initializable {
         query_set.close();
         stmt.close();
         connection.close();
+
+//        Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("Cảnh báo");
+//        //alert.setHeaderText("Bạn có chắc muốn xóa loại hành: "+hangnhap.getTen_LH()+" ?");
+//        alert.setHeaderText("Bạn đã in thành công");
+//        ButtonType btT2 = new ButtonType("Đóng",ButtonBar.ButtonData.NO);
+//
+//        alert.getButtonTypes().setAll(btT2);
+//        if(my_pdf_report!=null)
+//            alert.showAndWait();
     }
-
-
-
 
         public void thoatGiaoDich(ActionEvent event){
         GiaoDich.setVisible(false);
